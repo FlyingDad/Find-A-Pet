@@ -7,20 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C913AB21E252EA000A129B9 /* CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C913AB11E252EA000A129B9 /* CoreDataHelpers.swift */; };
 		4CA3ED4F1E200E8B00AFEAAA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA3ED4E1E200E8B00AFEAAA /* AppDelegate.swift */; };
-		4CA3ED511E200E8B00AFEAAA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA3ED501E200E8B00AFEAAA /* ViewController.swift */; };
+		4CA3ED511E200E8B00AFEAAA /* PetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA3ED501E200E8B00AFEAAA /* PetViewController.swift */; };
 		4CA3ED541E200E8B00AFEAAA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CA3ED521E200E8B00AFEAAA /* Main.storyboard */; };
 		4CA3ED571E200E8B00AFEAAA /* Find_a_Pet.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4CA3ED551E200E8B00AFEAAA /* Find_a_Pet.xcdatamodeld */; };
 		4CA3ED591E200E8B00AFEAAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CA3ED581E200E8B00AFEAAA /* Assets.xcassets */; };
 		4CA3ED5C1E200E8B00AFEAAA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CA3ED5A1E200E8B00AFEAAA /* LaunchScreen.storyboard */; };
 		4CA3ED641E20125800AFEAAA /* PetFinderConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA3ED631E20125800AFEAAA /* PetFinderConstants.swift */; };
 		4CA3ED671E20278200AFEAAA /* PetFinderClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA3ED661E20278200AFEAAA /* PetFinderClient.swift */; };
+		4CED1D5C1E241FCB00F48238 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CED1D5B1E241FCB00F48238 /* CoreDataStack.swift */; };
+		4CED1D731E242CBF00F48238 /* Photo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CED1D6F1E242CBF00F48238 /* Photo+CoreDataClass.swift */; };
+		4CED1D741E242CBF00F48238 /* Photo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CED1D701E242CBF00F48238 /* Photo+CoreDataProperties.swift */; };
+		4CED1D771E243A9A00F48238 /* Pet+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CED1D751E243A9A00F48238 /* Pet+CoreDataClass.swift */; };
+		4CED1D781E243A9A00F48238 /* Pet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CED1D761E243A9A00F48238 /* Pet+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C913AB11E252EA000A129B9 /* CoreDataHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelpers.swift; sourceTree = "<group>"; };
 		4CA3ED4B1E200E8B00AFEAAA /* Find a Pet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Find a Pet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CA3ED4E1E200E8B00AFEAAA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4CA3ED501E200E8B00AFEAAA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4CA3ED501E200E8B00AFEAAA /* PetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetViewController.swift; sourceTree = "<group>"; };
 		4CA3ED531E200E8B00AFEAAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4CA3ED561E200E8B00AFEAAA /* Find_a_Pet.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Find_a_Pet.xcdatamodel; sourceTree = "<group>"; };
 		4CA3ED581E200E8B00AFEAAA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -28,6 +35,11 @@
 		4CA3ED5D1E200E8B00AFEAAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CA3ED631E20125800AFEAAA /* PetFinderConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetFinderConstants.swift; sourceTree = "<group>"; };
 		4CA3ED661E20278200AFEAAA /* PetFinderClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetFinderClient.swift; sourceTree = "<group>"; };
+		4CED1D5B1E241FCB00F48238 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		4CED1D6F1E242CBF00F48238 /* Photo+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Photo+CoreDataClass.swift"; path = "Find a Pet/Photo+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4CED1D701E242CBF00F48238 /* Photo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Photo+CoreDataProperties.swift"; path = "Find a Pet/Photo+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4CED1D751E243A9A00F48238 /* Pet+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Pet+CoreDataClass.swift"; path = "Find a Pet/Pet+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4CED1D761E243A9A00F48238 /* Pet+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Pet+CoreDataProperties.swift"; path = "Find a Pet/Pet+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +56,10 @@
 		4CA3ED421E200E8B00AFEAAA = {
 			isa = PBXGroup;
 			children = (
+				4CED1D751E243A9A00F48238 /* Pet+CoreDataClass.swift */,
+				4CED1D761E243A9A00F48238 /* Pet+CoreDataProperties.swift */,
+				4CED1D6F1E242CBF00F48238 /* Photo+CoreDataClass.swift */,
+				4CED1D701E242CBF00F48238 /* Photo+CoreDataProperties.swift */,
 				4CA3ED4D1E200E8B00AFEAAA /* Find a Pet */,
 				4CA3ED4C1E200E8B00AFEAAA /* Products */,
 			);
@@ -60,9 +76,11 @@
 		4CA3ED4D1E200E8B00AFEAAA /* Find a Pet */ = {
 			isa = PBXGroup;
 			children = (
+				4CED1D561E216F0C00F48238 /* Model */,
+				4CED1D5A1E216F7200F48238 /* View */,
+				4CED1D591E216F5400F48238 /* Controller */,
 				4CA3ED651E20273900AFEAAA /* Client */,
 				4CA3ED4E1E200E8B00AFEAAA /* AppDelegate.swift */,
-				4CA3ED501E200E8B00AFEAAA /* ViewController.swift */,
 				4CA3ED521E200E8B00AFEAAA /* Main.storyboard */,
 				4CA3ED581E200E8B00AFEAAA /* Assets.xcassets */,
 				4CA3ED5A1E200E8B00AFEAAA /* LaunchScreen.storyboard */,
@@ -79,6 +97,30 @@
 				4CA3ED661E20278200AFEAAA /* PetFinderClient.swift */,
 			);
 			name = Client;
+			sourceTree = "<group>";
+		};
+		4CED1D561E216F0C00F48238 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4CED1D5B1E241FCB00F48238 /* CoreDataStack.swift */,
+				4C913AB11E252EA000A129B9 /* CoreDataHelpers.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		4CED1D591E216F5400F48238 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4CA3ED501E200E8B00AFEAAA /* PetViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		4CED1D5A1E216F7200F48238 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,11 +196,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4CA3ED511E200E8B00AFEAAA /* ViewController.swift in Sources */,
+				4CED1D731E242CBF00F48238 /* Photo+CoreDataClass.swift in Sources */,
+				4CED1D5C1E241FCB00F48238 /* CoreDataStack.swift in Sources */,
+				4CA3ED511E200E8B00AFEAAA /* PetViewController.swift in Sources */,
+				4C913AB21E252EA000A129B9 /* CoreDataHelpers.swift in Sources */,
 				4CA3ED641E20125800AFEAAA /* PetFinderConstants.swift in Sources */,
 				4CA3ED571E200E8B00AFEAAA /* Find_a_Pet.xcdatamodeld in Sources */,
 				4CA3ED4F1E200E8B00AFEAAA /* AppDelegate.swift in Sources */,
+				4CED1D771E243A9A00F48238 /* Pet+CoreDataClass.swift in Sources */,
 				4CA3ED671E20278200AFEAAA /* PetFinderClient.swift in Sources */,
+				4CED1D781E243A9A00F48238 /* Pet+CoreDataProperties.swift in Sources */,
+				4CED1D741E242CBF00F48238 /* Photo+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +372,7 @@
 				4CA3ED621E200E8B00AFEAAA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

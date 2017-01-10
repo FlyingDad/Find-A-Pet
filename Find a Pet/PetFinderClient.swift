@@ -10,7 +10,7 @@ import Foundation
 
 final class PetFinderClient {
     
-    func getPetTest () {
+    func getPet(completionHandlerForGetPet: @escaping (_ pet: [String: AnyObject]?, _ error: NSError?) -> Void) {
        
         let methodParameters = [
             PetFinderConstants.ParameterKeys.Key: PetFinderConstants.ParameterValues.ApiKey,
@@ -19,34 +19,42 @@ final class PetFinderClient {
         ]
     
         let urlString = PetFinderConstants.Url.APIBaseURL + PetFinderConstants.Method.GetSinglePet
-        print(urlString + escapedParameters(parameters: methodParameters))
-            //let urlString = "http://api.petfinder.com/pet.get?key=e6bc70bd191a1152df8fc462a3ecc179&id=33279898&format=json"
         getDataTask(urlString: urlString + escapedParameters(parameters: methodParameters)) { (data, error) in
             guard (error == nil) else {
-                //completionHandlerForGetPhotoDataForLocationId(nil, NSError(domain: "Get Photo Data", code: 100, userInfo: nil))
-                print("get pet error")
+                completionHandlerForGetPet(nil, NSError(domain: "getPet Data Task", code: 0, userInfo: nil))
                 return
             }
-            //print(data)
-            // Get status code of request. 100 is OK
-            guard let petfinder = data?[PetFinderConstants.ResponseKeys.General.Petfinder] as? [String: AnyObject],
-                let header = petfinder[PetFinderConstants.ResponseKeys.General.Header] as? [String: AnyObject],
-                let status = header[PetFinderConstants.ResponseKeys.General.Status] as? [String: AnyObject],
-                let code = status[PetFinderConstants.ResponseKeys.General.Code] as? [String: AnyObject],
-                let codeNumber = code[PetFinderConstants.ResponseKeys.General.MysteryT] as? String,
-                codeNumber == PetFinderConstants.StatusCodes.NoError.rawValue else {
-                    print("Status error")
-                return
+
+            self.getRequestStatusCode(data: data!) { (petFinderdata, error) in
+                
+                guard (error == nil) else {
+                    completionHandlerForGetPet(nil, NSError(domain: "getPet status code error", code: 0, userInfo: nil))
+                    return
+                }
+
+                // Get pet record in response
+                guard let pet = petFinderdata?[PetFinderConstants.ResponseKeys.PetRecord] as? [String: AnyObject] else {
+                    completionHandlerForGetPet(nil, NSError(domain: "getPet pet record error", code: 0, userInfo: nil))
+                    return
+                }
+                
+            completionHandlerForGetPet(pet, nil)
             }
-            // Get pet rocord in respisne
-            guard let pet = petfinder[PetFinderConstants.ResponseKeys.PetRecord] as? [String: AnyObject] else {
-                print("No pet")
-                return
-            }
-            print(pet)
-            
         }
-        
+    }
+    
+    
+    func getRequestStatusCode(data: AnyObject, completionHandler: (_ data: [String:AnyObject]?, _ error: NSError?) -> Void) {
+
+        guard let petfinderData = data[PetFinderConstants.ResponseKeys.General.Petfinder] as? [String: AnyObject],
+            let header = petfinderData[PetFinderConstants.ResponseKeys.General.Header] as? [String: AnyObject],
+            let status = header[PetFinderConstants.ResponseKeys.General.Status] as? [String: AnyObject],
+            let code = status[PetFinderConstants.ResponseKeys.General.Code] as? [String: AnyObject],
+            let codeNumber = code[PetFinderConstants.ResponseKeys.General.MysteryT] as? String,
+            codeNumber == PetFinderConstants.StatusCodes.NoError.rawValue else {
+                return completionHandler(nil, NSError(domain: "Get Status Code", code: 0, userInfo: nil))
+        }
+        return completionHandler(petfinderData, nil)
     }
     
     

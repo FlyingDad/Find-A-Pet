@@ -52,9 +52,10 @@ struct PetFinderConstants {
         
         struct Pet {
             static let Age = "age"
+            static let Animal = "animal"
             static let Breeds = "breed"  // Object can have multiple breeds
             static let Contact = "contact" // Object
-            static let Description = "description"
+            static let Desc = "description"
             static let Id = "id"
             static let LastUpdate = "lastUpdate"
             static let Media = "media"  // Object of photo objects
