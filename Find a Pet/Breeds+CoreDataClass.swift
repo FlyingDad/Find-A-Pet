@@ -1,15 +1,15 @@
 //
-//  Photo+CoreDataClass.swift
+//  Breeds+CoreDataClass.swift
 //  Find a Pet
 //
-//  Created by Michael Kroth on 1/9/17.
+//  Created by Michael Kroth on 1/16/17.
 //  Copyright © 2017 MGK Technology Solutions, LLC. All rights reserved.
 //
 
 import Foundation
 import CoreData
 
-@objc(Photo)
-public class Photo: NSManagedObject {
+@objc(Breeds)
+public class Breeds: NSManagedObject {
 
 }

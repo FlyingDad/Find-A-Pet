@@ -1,5 +1,5 @@
 //
-//  Pet+CoreDataClass.swift
+//  Options+CoreDataClass.swift
 //  Find a Pet
 //
 //  Created by Michael Kroth on 1/16/17.
@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-@objc(Pet)
-public class Pet: NSManagedObject {
+@objc(Options)
+public class Options: NSManagedObject {
 
 }

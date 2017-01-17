@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="aaZ-01-kAm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="GdK-0N-9P3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -22,11 +22,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="2QI-7P-Mjp" userLabel="Root Stack View">
-                                <rect key="frame" x="16" y="64" width="343" height="410.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="2QI-7P-Mjp" userLabel="Root Stack View">
+                                <rect key="frame" x="16" y="64" width="343" height="567"/>
                                 <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="kkf-vF-NvG">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="150"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultdog" translatesAutoresizingMaskIntoConstraints="NO" id="G6D-Lu-EUS">
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="150"/>
+                                            </imageView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="150" id="EAA-ZU-xo8"/>
+                                        </constraints>
+                                    </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="SNG-ov-H31">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="21"/>
+                                        <rect key="frame" x="0.0" y="156" width="343" height="21"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DsE-lU-YUe">
                                                 <rect key="frame" x="0.0" y="0.0" width="60" height="21"/>
@@ -44,7 +55,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Sk8-uW-jCD">
-                                        <rect key="frame" x="0.0" y="27" width="343" height="21"/>
+                                        <rect key="frame" x="0.0" y="183" width="343" height="21"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Animal:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W2v-5c-HOr">
                                                 <rect key="frame" x="0.0" y="0.0" width="60" height="21"/>
@@ -62,7 +73,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="FwZ-Kk-jDv">
-                                        <rect key="frame" x="0.0" y="54" width="343" height="21"/>
+                                        <rect key="frame" x="0.0" y="210" width="343" height="21"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Size:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HnF-P8-h7I">
                                                 <rect key="frame" x="0.0" y="0.0" width="60" height="21"/>
@@ -80,7 +91,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ClD-2G-3cR">
-                                        <rect key="frame" x="0.0" y="81" width="343" height="21"/>
+                                        <rect key="frame" x="0.0" y="237" width="343" height="21"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Giu-L6-YgK">
                                                 <rect key="frame" x="0.0" y="0.0" width="60" height="21"/>
@@ -98,7 +109,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6XR-xZ-Aj3">
-                                        <rect key="frame" x="0.0" y="108" width="343" height="21"/>
+                                        <rect key="frame" x="0.0" y="264" width="343" height="21"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mix:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jhU-pC-b8e">
                                                 <rect key="frame" x="0.0" y="0.0" width="60" height="21"/>
@@ -116,7 +127,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="QjR-Tt-fLe">
-                                        <rect key="frame" x="0.0" y="135" width="343" height="21"/>
+                                        <rect key="frame" x="0.0" y="291" width="343" height="21"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sex:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z7F-Ca-zcV">
                                                 <rect key="frame" x="0.0" y="0.0" width="60" height="21"/>
@@ -134,7 +145,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Jlw-bn-rMO" userLabel="Desc Stack View">
-                                        <rect key="frame" x="0.0" y="162" width="343" height="248.5"/>
+                                        <rect key="frame" x="0.0" y="318" width="343" height="248.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" horizontalCompressionResistancePriority="751" text="Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q9A-9d-jhx">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="21"/>
@@ -156,6 +167,7 @@
                                 <constraints>
                                     <constraint firstItem="HnF-P8-h7I" firstAttribute="width" secondItem="W2v-5c-HOr" secondAttribute="width" id="3Xh-i1-LGw"/>
                                     <constraint firstItem="Z7F-Ca-zcV" firstAttribute="width" secondItem="jhU-pC-b8e" secondAttribute="width" id="Bxx-WS-2rS"/>
+                                    <constraint firstItem="kkf-vF-NvG" firstAttribute="top" secondItem="2QI-7P-Mjp" secondAttribute="top" id="GMf-tK-bUh"/>
                                     <constraint firstItem="DsE-lU-YUe" firstAttribute="width" secondItem="W2v-5c-HOr" secondAttribute="width" id="TGE-0o-plx"/>
                                     <constraint firstItem="Giu-L6-YgK" firstAttribute="width" secondItem="W2v-5c-HOr" secondAttribute="width" id="jXd-dg-ceg"/>
                                     <constraint firstItem="jhU-pC-b8e" firstAttribute="width" secondItem="W2v-5c-HOr" secondAttribute="width" id="odD-wK-wBk"/>
@@ -182,7 +194,141 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="777" y="136"/>
+            <point key="canvasLocation" x="1990" y="820"/>
+        </scene>
+        <!--Find a Pet-->
+        <scene sceneID="eNR-na-tse">
+            <objects>
+                <viewController id="FF1-Wf-INo" customClass="SearchViewController" customModule="Find_a_Pet" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vui-HG-w06"/>
+                        <viewControllerLayoutGuide type="bottom" id="tLE-mh-YFy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Nu0-6I-000">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hvX-X1-p2l">
+                                <rect key="frame" x="126" y="216" width="123" height="32"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <state key="normal" title="Random Search"/>
+                                <connections>
+                                    <action selector="randomSearchPressed:" destination="FF1-Wf-INo" eventType="touchUpInside" id="xPf-KA-fcS"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="16H-JV-2BP">
+                                <rect key="frame" x="165" y="337" width="44" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Seque"/>
+                                <connections>
+                                    <segue destination="frr-rZ-ivi" kind="presentation" id="rqi-Fv-9GS"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="rFY-LS-3Hw">
+                                <rect key="frame" x="107" y="132" width="161" height="60"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="yXa-XH-fss">
+                                        <rect key="frame" x="0.0" y="0.0" width="161" height="20"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search by Zip Code: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PQI-0X-BUu">
+                                                <rect key="frame" x="0.0" y="0.0" width="161" height="20"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="xJm-eP-3r4">
+                                        <rect key="frame" x="0.0" y="28" width="161" height="32"/>
+                                        <subviews>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="95014" borderStyle="roundedRect" placeholder="95014" textAlignment="center" clearsOnBeginEditing="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6qX-0d-PXu">
+                                                <rect key="frame" x="0.0" y="1" width="81" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sof-5o-Ok4">
+                                                <rect key="frame" x="89" y="0.0" width="72" height="32"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                <state key="normal" title="Find Pets"/>
+                                                <connections>
+                                                    <action selector="searchByZip:" destination="FF1-Wf-INo" eventType="touchUpInside" id="vR8-jt-v0V"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rFY-LS-3Hw" firstAttribute="top" secondItem="vui-HG-w06" secondAttribute="bottom" constant="68" id="Fpy-m7-r6h"/>
+                            <constraint firstItem="hvX-X1-p2l" firstAttribute="centerX" secondItem="Nu0-6I-000" secondAttribute="centerX" id="Pjk-EM-0We"/>
+                            <constraint firstItem="hvX-X1-p2l" firstAttribute="top" secondItem="6qX-0d-PXu" secondAttribute="bottom" constant="25" id="gKt-HP-b8i"/>
+                            <constraint firstItem="rFY-LS-3Hw" firstAttribute="centerX" secondItem="Nu0-6I-000" secondAttribute="centerX" id="s6p-YO-H6u"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Find a Pet" id="hgo-Ge-rdE"/>
+                    <connections>
+                        <outlet property="randomSearchBtn" destination="hvX-X1-p2l" id="FrR-xA-l2s"/>
+                        <outlet property="zipCode" destination="6qX-0d-PXu" id="CfC-I5-4yv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rlb-Vj-mHH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="583" y="152"/>
+        </scene>
+        <!--Search Results Table View Controller-->
+        <scene sceneID="6SJ-8K-oWG">
+            <objects>
+                <tableViewController storyboardIdentifier="SearchResultsViewController" id="Hcn-pB-yxA" customClass="SearchResultsTableViewController" customModule="Find_a_Pet" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="qXn-tB-xaD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PetCell" textLabel="cNV-Et-gjy" detailTextLabel="UcT-DP-MRf" style="IBUITableViewCellStyleSubtitle" id="659-cE-hom">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="659-cE-hom" id="SXY-OV-sHS">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cNV-Et-gjy">
+                                            <rect key="frame" x="15" y="5" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UcT-DP-MRf">
+                                            <rect key="frame" x="15" y="25.5" width="44" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Hcn-pB-yxA" id="9Ay-NB-bx4"/>
+                            <outlet property="delegate" destination="Hcn-pB-yxA" id="lSr-p4-DEw"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="xig-OH-Xfo">
+                        <barButtonItem key="rightBarButtonItem" title="Refresh" id="9XR-UP-vsx">
+                            <connections>
+                                <action selector="refresh:" destination="Hcn-pB-yxA" id="sNg-bq-5Ch"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cak-Cb-6y4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1991" y="152"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="s3u-VD-7Co">
@@ -200,7 +346,46 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="er6-Qk-rJ3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="18" y="137"/>
+            <point key="canvasLocation" x="1286" y="820"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fGK-G3-pwa">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GdK-0N-9P3" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xh3-5I-qGG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="FF1-Wf-INo" kind="relationship" relationship="rootViewController" id="yp1-Uc-Tv3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5mx-nx-N3S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-140" y="152"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="zZE-e7-j3a">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="frr-rZ-ivi" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cJp-Se-LfP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Hcn-pB-yxA" kind="relationship" relationship="rootViewController" id="QDU-md-iME"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FJr-Tc-eIF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1285.5999999999999" y="151.57421289355324"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="defaultdog" width="276" height="453"/>
+    </resources>
 </document>

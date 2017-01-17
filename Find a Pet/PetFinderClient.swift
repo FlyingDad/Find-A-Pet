@@ -7,8 +7,48 @@
 //
 
 import Foundation
+import CoreData
 
 final class PetFinderClient {
+    
+    var managedContext: NSManagedObjectContext!
+    
+    // Find pet via location
+    func findPet(location: String, completionHandlerForFindPet: @escaping (_ pet: [String: AnyObject]?, _ error: NSError?) -> Void) {
+        
+        let methodParameters = [
+            PetFinderConstants.ParameterKeys.Key: PetFinderConstants.ParameterValues.ApiKey,
+            PetFinderConstants.ParameterKeys.FindPet.Location: location,
+            PetFinderConstants.ParameterKeys.Count: "3", // MARK: TODO
+            PetFinderConstants.ParameterKeys.Format: PetFinderConstants.ParameterValues.FormatJSON
+        ]
+        
+        let urlString = PetFinderConstants.Url.APIBaseURL + PetFinderConstants.Method.FindPetByLocation
+        getDataTask(urlString: urlString + escapedParameters(parameters: methodParameters)) { (data, error) in
+            
+            guard (error == nil) else {
+                completionHandlerForFindPet(nil, NSError(domain: "findPet Data Task", code: 0, userInfo: nil))
+                return
+            }
+            
+            self.getRequestStatusCode(data: data!) { (petFinderdata, error) in
+                
+                guard (error == nil) else {
+                    completionHandlerForFindPet(nil, NSError(domain: "findPet status code", code: 0, userInfo: nil))
+                    return
+                }
+                
+                // Get pet record in response
+                guard let petsFound = petFinderdata?[PetFinderConstants.ResponseKeys.PetsFound] as? [String: AnyObject] else {
+                    completionHandlerForFindPet(nil, NSError(domain: "findPet pet record", code: 0, userInfo: nil))
+                    return
+                }
+                
+                completionHandlerForFindPet(petsFound, nil)
+            }
+        }
+    }
+    
     
     func getPet(completionHandlerForGetPet: @escaping (_ pet: [String: AnyObject]?, _ error: NSError?) -> Void) {
        
@@ -84,6 +124,23 @@ final class PetFinderClient {
         }
         task.resume()
     }
+    
+    func downloadPhoto(urlString: String, completionHandlerForDownloadPhoto: @escaping(_ result: Data?, _ error: NSError?) -> Void) {
+        let url = URL(string: urlString)!
+        let request = URLRequest(url: url)
+        let session = URLSession.shared
+        let task = session.dataTask(with: request) { (data, response, error) in
+            
+            guard (error == nil) else {
+                completionHandlerForDownloadPhoto(nil, error! as NSError)
+                return
+            }
+            completionHandlerForDownloadPhoto(data, nil)
+        }
+        task.resume()
+        
+    }
+
 
     
     private func escapedParameters(parameters: [String: Any]) -> String {

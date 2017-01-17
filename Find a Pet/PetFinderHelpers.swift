@@ -1,17 +1,30 @@
 //
-//  CoreDataHelpers.swift
+//  PetFinderHelpers.swift
 //  Find a Pet
 //
 //  Created by Michael Kroth on 1/10/17.
 //  Copyright © 2017 MGK Technology Solutions, LLC. All rights reserved.
 //
 
-import Foundation
 import CoreData
 
-class CoreDataHelpers {
-    
-    var managedContext: NSManagedObjectContext!
+extension PetFinderClient {
+        
+    func parseFoundPets(petsFound: [String: AnyObject]) {
+        //print(petsFound, petsFound.count)
+        var pet: Pet!
+
+        if let petsArray = petsFound[PetFinderConstants.ResponseKeys.PetRecord] as? [[String: AnyObject]] {
+            print("Pets found: \(petsArray.count)")
+            for eachPet in petsArray {
+                pet = parsePet(petData: eachPet)
+                print(pet.name)
+            }
+        } else {
+            print("needs work")
+        }
+        
+    }
     
     func parsePet(petData: [String: AnyObject]) -> Pet {
         // Save to core data
@@ -74,11 +87,54 @@ class CoreDataHelpers {
             //print(size)
         }
         
-        //        let petEntity = NSEntityDescription.entity(forEntityName: "Pet", in: managedContext)!
-        //        let pet = Pet(entity: petEntity, insertInto: managedContext)
-        //
+        if let mediaDict = petData[PetFinderConstants.ResponseKeys.Pet.Media],
+            let photos = mediaDict[PetFinderConstants.ResponseKeys.Pet.Photos] as? [String: AnyObject] {
+               // print(photos)
+            
+            // Parse and save photos
+            parsePhotos(photosData: photos, pet: pet)
+        }
+        
+        // Save pet
+//        DispatchQueue.main.async {
+//            print("saving pet")
+//            do {
+//                try self.managedContext.save()
+//            } catch let error as NSError {
+//                print("Pet save error: \(error)")
+//            }
+//        }
+
         return pet
     }
-    
+
+    // Parse and save pet photos
+    func parsePhotos(photosData: [String: AnyObject], pet: Pet) {
+
+        let photoEntity = NSEntityDescription.entity(forEntityName: "Photo", in: managedContext)!
+        let photo = Photos(entity: photoEntity, insertInto: managedContext)
+        
+        if let photoDict =  photosData[PetFinderConstants.ResponseKeys.Photo.Photo] as? [[String: AnyObject]] {
+            
+            for eachPhoto in photoDict {
+                // Only get large photos
+                if let size = eachPhoto[PetFinderConstants.ResponseKeys.Photo.size] as? String, size == PetFinderConstants.ResponseValues.Photo.sizeXL {
+                    let url = eachPhoto[PetFinderConstants.ResponseKeys.General.MysteryT] as? String
+                    //print(url)
+                    photo.url = url
+                    photo.pet = pet
+                    // save photo
+//                    DispatchQueue.main.async {
+//                        print("saving pet photos")
+//                        do {
+//                            try self.managedContext.save()
+//                        } catch let error as NSError {
+//                            print("Photo save error: \(error)")
+//                        }
+//                    }
+                }
+            }
+        }
+    }
     
 }

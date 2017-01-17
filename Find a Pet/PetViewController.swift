@@ -21,10 +21,11 @@ class PetViewController: UIViewController {
     
     var managedContext: NSManagedObjectContext!
     var pet: Pet!
-    var coreDataHelpers = CoreDataHelpers()
+    //var coreDataHelpers = CoreDataHelpers()
     
     //let petStruct: PetStruct!
     let petFinderClient = PetFinderClient()
+    let swiftyParse = SwiftyParse()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,16 +36,18 @@ class PetViewController: UIViewController {
                 print("Get Pet Error: \(error?.localizedDescription)")
                 return
             }
-            guard let pet = pet else {
+            guard let petData = pet else {
                 print("No pet data")
                 return
             }
-            self.coreDataHelpers.managedContext = self.managedContext
-            self.pet = self.coreDataHelpers.parsePet(petData: pet)
+            //self.petFinderClient.managedContext = self.managedContext
+            //self.pet = self.petFinderClient.parsePet(petData: pet)
             //self.parsePet(petData: pet)
-            DispatchQueue.main.async {
-                self.displayPet(pet: self.pet)
-            }
+            
+//            self.pet = self.swiftyParse.parseAndSavePet(petData: petData, managedContext: self.managedContext)
+//            DispatchQueue.main.async {
+//                self.displayPet(pet: self.pet)
+//            }
         }
     }
 

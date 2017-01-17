@@ -17,6 +17,7 @@ struct PetFinderConstants {
     }
     
     struct Method {
+        static let FindPetByLocation = "pet.find"
         static let GetSinglePet = "pet.get"
         static let GetPetsAtShelter = "shelter.getPets"
         static let GetShelterInfo = "shelter.get"
@@ -28,12 +29,20 @@ struct PetFinderConstants {
         static let Format = "format"
         static let Id = "id"
         static let Count = "count"
+        
+        struct FindPet {
+            static let Animal = "animal"
+            static let Breed = "breed"
+            static let Size = "size"
+            static let Sex = "sex"
+            static let Location = "location"  // Zip or city, st
+            static let Age = "age"
+        }
     }
     
     struct ParameterValues {
         static let ApiKey = "e6bc70bd191a1152df8fc462a3ecc179"
         static let FormatJSON = "json"
-        
         static let MaxCount = "25" // Adjust this later
     }
     
@@ -46,6 +55,8 @@ struct PetFinderConstants {
             static let Code = "code"
             static let MysteryT = "$t"
         }
+        // Find Pet
+        static let PetsFound = "pets"
         
         // Get Pet
         static let PetRecord = "pet"  // Top Object
@@ -53,7 +64,7 @@ struct PetFinderConstants {
         struct Pet {
             static let Age = "age"
             static let Animal = "animal"
-            static let Breeds = "breed"  // Object can have multiple breeds
+            static let Breeds = "breeds"  // Object can have multiple breeds
             static let Contact = "contact" // Object
             static let Desc = "description"
             static let Id = "id"
@@ -67,12 +78,27 @@ struct PetFinderConstants {
             static let ShelterPetId = "shelterPetId"
             static let Size = "size"
             static let Status = "status"
+            static let Photos = "photos"
+        }
+        
+        struct Photo {
+            static let Photo = "photo"
+            static let size = "@size"
+        }
+        
+        struct Option {
+            static let Option = "option"
+        }
+        
+        struct Breeds {
+            static let Breed = "breed"
         }
     }
     
     struct ResponseValues {
-        
-        
+        struct Photo {
+            static let sizeXL = "x"  // largest photo in api - 500px
+        }
     }
     
     enum StatusCodes: String {

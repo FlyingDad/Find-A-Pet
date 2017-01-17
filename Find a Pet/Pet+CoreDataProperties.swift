@@ -2,7 +2,7 @@
 //  Pet+CoreDataProperties.swift
 //  Find a Pet
 //
-//  Created by Michael Kroth on 1/9/17.
+//  Created by Michael Kroth on 1/16/17.
 //  Copyright © 2017 MGK Technology Solutions, LLC. All rights reserved.
 //
 
@@ -17,6 +17,7 @@ extension Pet {
     }
 
     @NSManaged public var age: String?
+    @NSManaged public var animal: String?
     @NSManaged public var desc: String?
     @NSManaged public var id: String?
     @NSManaged public var lastUpdate: String?
@@ -26,24 +27,59 @@ extension Pet {
     @NSManaged public var shelterId: String?
     @NSManaged public var shelterPetId: String?
     @NSManaged public var size: String?
-    @NSManaged public var animal: String?
-    @NSManaged public var photo: NSSet?
+    @NSManaged public var photos: NSSet?
+    @NSManaged public var options: NSSet?
+    @NSManaged public var breeds: NSSet?
 
 }
 
-// MARK: Generated accessors for photo
+// MARK: Generated accessors for photos
 extension Pet {
 
-    @objc(addPhotoObject:)
-    @NSManaged public func addToPhoto(_ value: Photo)
+    @objc(addPhotosObject:)
+    @NSManaged public func addToPhotos(_ value: Photos)
 
-    @objc(removePhotoObject:)
-    @NSManaged public func removeFromPhoto(_ value: Photo)
+    @objc(removePhotosObject:)
+    @NSManaged public func removeFromPhotos(_ value: Photos)
 
-    @objc(addPhoto:)
-    @NSManaged public func addToPhoto(_ values: NSSet)
+    @objc(addPhotos:)
+    @NSManaged public func addToPhotos(_ values: NSSet)
 
-    @objc(removePhoto:)
-    @NSManaged public func removeFromPhoto(_ values: NSSet)
+    @objc(removePhotos:)
+    @NSManaged public func removeFromPhotos(_ values: NSSet)
+
+}
+
+// MARK: Generated accessors for options
+extension Pet {
+
+    @objc(addOptionsObject:)
+    @NSManaged public func addToOptions(_ value: Options)
+
+    @objc(removeOptionsObject:)
+    @NSManaged public func removeFromOptions(_ value: Options)
+
+    @objc(addOptions:)
+    @NSManaged public func addToOptions(_ values: NSSet)
+
+    @objc(removeOptions:)
+    @NSManaged public func removeFromOptions(_ values: NSSet)
+
+}
+
+// MARK: Generated accessors for breeds
+extension Pet {
+
+    @objc(addBreedsObject:)
+    @NSManaged public func addToBreeds(_ value: Breeds)
+
+    @objc(removeBreedsObject:)
+    @NSManaged public func removeFromBreeds(_ value: Breeds)
+
+    @objc(addBreeds:)
+    @NSManaged public func addToBreeds(_ values: NSSet)
+
+    @objc(removeBreeds:)
+    @NSManaged public func removeFromBreeds(_ values: NSSet)
 
 }
