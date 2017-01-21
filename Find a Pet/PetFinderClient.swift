@@ -19,7 +19,7 @@ final class PetFinderClient {
         let methodParameters = [
             PetFinderConstants.ParameterKeys.Key: PetFinderConstants.ParameterValues.ApiKey,
             PetFinderConstants.ParameterKeys.FindPet.Location: location,
-            PetFinderConstants.ParameterKeys.Count: "3", // MARK: TODO
+            PetFinderConstants.ParameterKeys.Count: "20", // MARK: TODO
             PetFinderConstants.ParameterKeys.Format: PetFinderConstants.ParameterValues.FormatJSON
         ]
         

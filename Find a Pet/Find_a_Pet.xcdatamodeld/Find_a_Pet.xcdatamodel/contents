@@ -12,6 +12,7 @@
         <attribute name="age" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="animal" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="favorite" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastUpdate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mix" optional="YES" attributeType="String" syncable="YES"/>
@@ -20,6 +21,7 @@
         <attribute name="shelterId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="shelterPetId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="size" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="zipCode" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <relationship name="breeds" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Breeds" inverseName="pet" inverseEntity="Breeds" syncable="YES"/>
         <relationship name="options" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Options" inverseName="pet" inverseEntity="Options" syncable="YES"/>
         <relationship name="photos" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Photos" inverseName="pet" inverseEntity="Photos" syncable="YES"/>
@@ -31,9 +33,9 @@
     </entity>
     <fetchRequest name="FetchAll" entity="Pet"/>
     <elements>
-        <element name="Options" positionX="-36" positionY="90" width="128" height="75"/>
-        <element name="Pet" positionX="-576" positionY="-144" width="128" height="255"/>
-        <element name="Photos" positionX="-54" positionY="-9" width="128" height="90"/>
-        <element name="Breeds" positionX="-369" positionY="0" width="128" height="75"/>
+        <element name="Breeds" positionX="-369" positionY="0" width="128" height="73"/>
+        <element name="Options" positionX="-47" positionY="258" width="128" height="73"/>
+        <element name="Pet" positionX="-576" positionY="-144" width="128" height="285"/>
+        <element name="Photos" positionX="-47" positionY="-198" width="128" height="90"/>
     </elements>
 </model>

@@ -12,25 +12,25 @@ import CoreData
 class SwiftyParse {
     
     
-    func parseFoundPets(petsFound: [String: AnyObject], coreDataStack: CoreDataStack) {
+    func parseFoundPets(petsFound: [String: AnyObject], zipCode: String, coreDataStack: CoreDataStack) {
         
         let json = JSON(petsFound)
         let petsArray = json[PetFinderConstants.ResponseKeys.PetRecord]
         //print(petsArray)
         
         for (_, petData):(String, JSON) in petsArray {
-            parseAndSavePet(json: petData, coreDataStack: coreDataStack)
+            parseAndSavePet(json: petData, zipCode: zipCode,coreDataStack: coreDataStack)
         }
     }
     
     
-    func parseAndSavePet(json: JSON, coreDataStack: CoreDataStack) -> Void {
+    func parseAndSavePet(json: JSON, zipCode: String, coreDataStack: CoreDataStack) -> Void {
         
         // Save to core data
         let petEntity = NSEntityDescription.entity(forEntityName: "Pet", in: coreDataStack.managedContext)!
         let pet = Pet(entity: petEntity, insertInto: coreDataStack.managedContext)
         
-        //print(json)
+        pet.zipCode = zipCode
         pet.name = json[PetFinderConstants.ResponseKeys.Pet.Name][PetFinderConstants.ResponseKeys.General.MysteryT].stringValue
         pet.age = json[PetFinderConstants.ResponseKeys.Pet.Age][PetFinderConstants.ResponseKeys.General.MysteryT].stringValue
         pet.animal = json[PetFinderConstants.ResponseKeys.Pet.Animal][PetFinderConstants.ResponseKeys.General.MysteryT].stringValue
@@ -59,11 +59,13 @@ class SwiftyParse {
         //parseBreeds(json: json, managedContext: managedContext, pet: pet)
         
         //Save pet
-        DispatchQueue.main.async {
-            print("saving pet \(pet.name)")
-            coreDataStack.saveContext()
-        }
-        
+//        DispatchQueue.main.async {
+//            //print("saving pet \(pet.name)")
+//            coreDataStack.saveContext()
+//        }
+        parsePhotos(json: json, coreDataStack: coreDataStack, pet: pet)
+        parseOptions(json: json, coreDataStack: coreDataStack, pet: pet)
+        parseBreeds(json: json, coreDataStack: coreDataStack, pet: pet)
        //return pet
     }
 
@@ -71,20 +73,31 @@ class SwiftyParse {
     // Parse and save pet photos
     func parsePhotos(json: JSON, coreDataStack: CoreDataStack, pet: Pet) {
         
-        let photoEntity = NSEntityDescription.entity(forEntityName: "Photos", in: coreDataStack.managedContext)!
-        let photo = Photos(entity: photoEntity, insertInto: coreDataStack.managedContext)
         
         let photoArray = json[PetFinderConstants.ResponseKeys.Pet.Media][PetFinderConstants.ResponseKeys.Pet.Photos][PetFinderConstants.ResponseKeys.Photo.Photo]
-
-        for (_, photoData):(String, JSON) in photoArray {
-            //print(photo)
+        //print(photoArray)
+        for (index, photoData):(String, JSON) in photoArray {
+            //print("loop index: \(index)")
             if photoData[PetFinderConstants.ResponseKeys.Photo.size].string == PetFinderConstants.ResponseValues.Photo.sizeXL {
-                print(photoData[PetFinderConstants.ResponseKeys.General.MysteryT])
+                //let photoEntity = NSEntityDescription.entity(forEntityName: "Photos", in: coreDataStack.managedContext)!
+                let photo = NSEntityDescription.insertNewObject(forEntityName: "Photos", into: coreDataStack.managedContext) as! Photos
+
+                //print(photoData[PetFinderConstants.ResponseKeys.General.MysteryT])
                 photo.url = photoData[PetFinderConstants.ResponseKeys.General.MysteryT].stringValue
+                //print(photo.url)
                 photo.pet = pet
+
+                pet.addToPhotos(photo)
+                //print("saving pet photo for \(pet.name) index \(index)")
+                DispatchQueue.main.async {
+                    //print("saving pet photo for \(pet.name) index \(index)")
+                    //print(photo.url)
+                    coreDataStack.saveContext()
+                }
                 
             }
         }
+        
 
 //                    // save photo
 //                    //                    DispatchQueue.main.async {
@@ -103,23 +116,38 @@ class SwiftyParse {
     // Parse and save pet options
     func parseOptions(json: JSON, coreDataStack: CoreDataStack, pet: Pet) {
         
-        let optionsEntity = NSEntityDescription.entity(forEntityName: "Options", in: coreDataStack.managedContext)!
-        let options = Options(entity: optionsEntity, insertInto: coreDataStack.managedContext)
+        //let optionsEntity = NSEntityDescription.entity(forEntityName: "Options", in: coreDataStack.managedContext)!
+        //let options = Options(entity: optionsEntity, insertInto: coreDataStack.managedContext)
         
         
-        print("Processing options")
+        //print("Processing options")
         if let optionArray = json[PetFinderConstants.ResponseKeys.Pet.Options][PetFinderConstants.ResponseKeys.Option.Option].array {
             for option in optionArray {
+                let options = NSEntityDescription.insertNewObject(forEntityName: "Options", into: coreDataStack.managedContext) as! Options
                 options.option = option[PetFinderConstants.ResponseKeys.General.MysteryT].stringValue
-                options.pet = pet
-                print(options.option!)
+                //options.pet = pet
+                //print(options.option!)
+                pet.addToOptions(options)
+            }
+            DispatchQueue.main.async {
+                //print("saving pet photo for \(pet.name) index \(index)")
+                //print(photo.url)
+                coreDataStack.saveContext()
             }
         } else if let optionsDict = json[PetFinderConstants.ResponseKeys.Pet.Options][PetFinderConstants.ResponseKeys.Option.Option].dictionary {
+            let options = NSEntityDescription.insertNewObject(forEntityName: "Options", into: coreDataStack.managedContext) as! Options
             options.option = optionsDict[PetFinderConstants.ResponseKeys.General.MysteryT]?.stringValue
-            options.pet = pet
-            print(options.option!)
+            //options.pet = pet
+            //print(options.option!)
+            pet.addToOptions(options)
+            DispatchQueue.main.async {
+                //print("saving pet photo for \(pet.name) index \(index)")
+                //print(photo.url)
+                coreDataStack.saveContext()
+            }
 
         }
+        
 
         //                    // save option
         //                    //                    DispatchQueue.main.async {
@@ -138,22 +166,36 @@ class SwiftyParse {
     // Parse and save pet breeds
     func parseBreeds(json: JSON, coreDataStack: CoreDataStack, pet: Pet) {
         
-        let breedsEntity = NSEntityDescription.entity(forEntityName: "Breeds", in: coreDataStack.managedContext)!
-        let breeds = Breeds(entity: breedsEntity, insertInto: coreDataStack.managedContext)
-        print("Processing breeds")
+        //let breedsEntity = NSEntityDescription.entity(forEntityName: "Breeds", in: coreDataStack.managedContext)!
+        //let breeds = Breeds(entity: breedsEntity, insertInto: coreDataStack.managedContext)
+        //print("Processing breeds")
         
         // SwiftyJSON returns array if array od dict, or dict if only ONE dict in array
         if let breedsArray = json[PetFinderConstants.ResponseKeys.Pet.Breeds][PetFinderConstants.ResponseKeys.Breeds.Breed].array {
+            let breeds = NSEntityDescription.insertNewObject(forEntityName: "Breeds", into: coreDataStack.managedContext) as! Breeds
             for breed in breedsArray{
                 breeds.breed = breed[PetFinderConstants.ResponseKeys.General.MysteryT].stringValue
                 breeds.pet = pet
-                print(breeds.breed!)
+                //print(breeds.breed!)
+                DispatchQueue.main.async {
+                    //print("saving pet photo for \(pet.name) index \(index)")
+                    //print(photo.url)
+                    coreDataStack.saveContext()
+                }
+
             }
         } else
             if let breedsDict = json[PetFinderConstants.ResponseKeys.Pet.Breeds][PetFinderConstants.ResponseKeys.Breeds.Breed].dictionary {
+                let breeds = NSEntityDescription.insertNewObject(forEntityName: "Breeds", into: coreDataStack.managedContext) as! Breeds
             breeds.breed = breedsDict[PetFinderConstants.ResponseKeys.General.MysteryT]?.stringValue
             breeds.pet = pet
-            print(breeds.breed!)
+                DispatchQueue.main.async {
+                    //print("saving pet photo for \(pet.name) index \(index)")
+                    //print(photo.url)
+                    coreDataStack.saveContext()
+                }
+
+            //print(breeds.breed!)
         }
         
         

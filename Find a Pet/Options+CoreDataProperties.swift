@@ -2,7 +2,7 @@
 //  Options+CoreDataProperties.swift
 //  Find a Pet
 //
-//  Created by Michael Kroth on 1/16/17.
+//  Created by Michael Kroth on 1/20/17.
 //  Copyright © 2017 MGK Technology Solutions, LLC. All rights reserved.
 //
 

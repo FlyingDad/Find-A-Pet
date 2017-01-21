@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		4C10B2EF1E2BF6F800D39B2C /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C10B2EE1E2BF6F800D39B2C /* SwiftyJSON.swift */; };
 		4C10B2F11E2BF71A00D39B2C /* SwiftyParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C10B2F01E2BF71A00D39B2C /* SwiftyParse.swift */; };
-		4C30AD671E2D69850079DF9C /* SearchResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C30AD661E2D69850079DF9C /* SearchResultsTableViewController.swift */; };
 		4C30AD701E2D6F3C0079DF9C /* Breeds+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C30AD681E2D6F3C0079DF9C /* Breeds+CoreDataClass.swift */; };
 		4C30AD711E2D6F3C0079DF9C /* Breeds+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C30AD691E2D6F3C0079DF9C /* Breeds+CoreDataProperties.swift */; };
 		4C30AD721E2D6F3C0079DF9C /* Options+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C30AD6A1E2D6F3C0079DF9C /* Options+CoreDataClass.swift */; };
@@ -19,6 +18,9 @@
 		4C30AD761E2D6F3C0079DF9C /* Photos+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C30AD6E1E2D6F3C0079DF9C /* Photos+CoreDataClass.swift */; };
 		4C30AD771E2D6F3C0079DF9C /* Photos+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C30AD6F1E2D6F3C0079DF9C /* Photos+CoreDataProperties.swift */; };
 		4C380AB51E2584E700669CA3 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C380AB41E2584E700669CA3 /* SearchViewController.swift */; };
+		4C80DB781E2E85520053AA34 /* PetSearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C80DB771E2E85520053AA34 /* PetSearchResultCell.swift */; };
+		4C80DB7A1E2E8FA20053AA34 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C80DB791E2E8FA20053AA34 /* SearchResultsViewController.swift */; };
+		4C80DB7C1E2E98390053AA34 /* CoreDataTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C80DB7B1E2E98390053AA34 /* CoreDataTableViewController.swift */; };
 		4C913AB21E252EA000A129B9 /* PetFinderHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C913AB11E252EA000A129B9 /* PetFinderHelpers.swift */; };
 		4CA3ED4F1E200E8B00AFEAAA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA3ED4E1E200E8B00AFEAAA /* AppDelegate.swift */; };
 		4CA3ED511E200E8B00AFEAAA /* PetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA3ED501E200E8B00AFEAAA /* PetViewController.swift */; };
@@ -34,7 +36,6 @@
 /* Begin PBXFileReference section */
 		4C10B2EE1E2BF6F800D39B2C /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		4C10B2F01E2BF71A00D39B2C /* SwiftyParse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyParse.swift; sourceTree = "<group>"; };
-		4C30AD661E2D69850079DF9C /* SearchResultsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsTableViewController.swift; sourceTree = "<group>"; };
 		4C30AD681E2D6F3C0079DF9C /* Breeds+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Breeds+CoreDataClass.swift"; path = "Find a Pet/Breeds+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4C30AD691E2D6F3C0079DF9C /* Breeds+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Breeds+CoreDataProperties.swift"; path = "Find a Pet/Breeds+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4C30AD6A1E2D6F3C0079DF9C /* Options+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Options+CoreDataClass.swift"; path = "Find a Pet/Options+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -44,6 +45,9 @@
 		4C30AD6E1E2D6F3C0079DF9C /* Photos+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Photos+CoreDataClass.swift"; path = "Find a Pet/Photos+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4C30AD6F1E2D6F3C0079DF9C /* Photos+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Photos+CoreDataProperties.swift"; path = "Find a Pet/Photos+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4C380AB41E2584E700669CA3 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		4C80DB771E2E85520053AA34 /* PetSearchResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetSearchResultCell.swift; sourceTree = "<group>"; };
+		4C80DB791E2E8FA20053AA34 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
+		4C80DB7B1E2E98390053AA34 /* CoreDataTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTableViewController.swift; sourceTree = "<group>"; };
 		4C913AB11E252EA000A129B9 /* PetFinderHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetFinderHelpers.swift; sourceTree = "<group>"; };
 		4CA3ED4B1E200E8B00AFEAAA /* Find a Pet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Find a Pet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CA3ED4E1E200E8B00AFEAAA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -141,8 +145,9 @@
 		4CED1D591E216F5400F48238 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4C80DB7B1E2E98390053AA34 /* CoreDataTableViewController.swift */,
 				4CA3ED501E200E8B00AFEAAA /* PetViewController.swift */,
-				4C30AD661E2D69850079DF9C /* SearchResultsTableViewController.swift */,
+				4C80DB791E2E8FA20053AA34 /* SearchResultsViewController.swift */,
 				4C380AB41E2584E700669CA3 /* SearchViewController.swift */,
 			);
 			name = Controller;
@@ -151,6 +156,7 @@
 		4CED1D5A1E216F7200F48238 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4C80DB771E2E85520053AA34 /* PetSearchResultCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -232,20 +238,22 @@
 				4CA3ED511E200E8B00AFEAAA /* PetViewController.swift in Sources */,
 				4C913AB21E252EA000A129B9 /* PetFinderHelpers.swift in Sources */,
 				4CA3ED641E20125800AFEAAA /* PetFinderConstants.swift in Sources */,
-				4C30AD671E2D69850079DF9C /* SearchResultsTableViewController.swift in Sources */,
 				4C30AD771E2D6F3C0079DF9C /* Photos+CoreDataProperties.swift in Sources */,
 				4C30AD731E2D6F3C0079DF9C /* Options+CoreDataProperties.swift in Sources */,
 				4CA3ED571E200E8B00AFEAAA /* Find_a_Pet.xcdatamodeld in Sources */,
 				4C380AB51E2584E700669CA3 /* SearchViewController.swift in Sources */,
 				4C10B2F11E2BF71A00D39B2C /* SwiftyParse.swift in Sources */,
+				4C80DB7A1E2E8FA20053AA34 /* SearchResultsViewController.swift in Sources */,
 				4C30AD711E2D6F3C0079DF9C /* Breeds+CoreDataProperties.swift in Sources */,
 				4CA3ED4F1E200E8B00AFEAAA /* AppDelegate.swift in Sources */,
 				4C30AD751E2D6F3C0079DF9C /* Pet+CoreDataProperties.swift in Sources */,
 				4C30AD721E2D6F3C0079DF9C /* Options+CoreDataClass.swift in Sources */,
+				4C80DB7C1E2E98390053AA34 /* CoreDataTableViewController.swift in Sources */,
 				4CA3ED671E20278200AFEAAA /* PetFinderClient.swift in Sources */,
 				4C30AD701E2D6F3C0079DF9C /* Breeds+CoreDataClass.swift in Sources */,
 				4C10B2EF1E2BF6F800D39B2C /* SwiftyJSON.swift in Sources */,
 				4C30AD761E2D6F3C0079DF9C /* Photos+CoreDataClass.swift in Sources */,
+				4C80DB781E2E85520053AA34 /* PetSearchResultCell.swift in Sources */,
 				4C30AD741E2D6F3C0079DF9C /* Pet+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

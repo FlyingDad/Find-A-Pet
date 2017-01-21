@@ -22,25 +22,6 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        petFinderClient.findPet(location: "65738", completionHandlerForFindPet: { (petsFound, error) in
-//            // print(pet)
-//            guard (error == nil) else {
-//                print("Get Pet Error: \(error?.localizedDescription)")
-//                return
-//            }
-//            guard let petsFound = petsFound else {
-//                print("No pet data")
-//                return
-//            }
-//            //print(petsFound)
-//            print("Found pets for 65738")
-//            self.swiftyParse.parseFoundPets(petsFound: petsFound, managedContext: self.managedContext)
-        
-            //self.petFinderClient.managedContext = self.managedContext
-            //self.petFinderClient.parseFoundPets(petsFound: petsFound)
-       // })
-
     }
 
     
@@ -50,12 +31,16 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func searchByZip(_ sender: Any) {
+        
+        // need to delete all recoreds here for new search
+        self.deleteAllPets()
         print("Search by zip pressed")
-        if zipCode.text?.characters.count != 5 {
+        let searchZip = zipCode.text
+        if searchZip?.characters.count != 5 {
             print("Alert goes here")
         } else {
             print(zipCode.text!)
-            petFinderClient.findPet(location: zipCode.text!, completionHandlerForFindPet: { (petsFound, error) in
+            petFinderClient.findPet(location: searchZip!, completionHandlerForFindPet: { (petsFound, error) in
                 guard (error == nil) else {
                     print("Get Pet Error: \(error?.localizedDescription)")
                     return
@@ -66,13 +51,31 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
                 }
                 //print(petsFound)
                 print("Found pets for 65738")
-                self.swiftyParse.parseFoundPets(petsFound: petsFound, coreDataStack: self.coreDataStack)
+                self.swiftyParse.parseFoundPets(petsFound: petsFound, zipCode: searchZip!, coreDataStack: self.coreDataStack)
             })
         }
 
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SearchResultsViewController") as! SearchResultsTableViewController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SearchResultsViewController") as! SearchResultsViewController
         vc.coreDataStack = coreDataStack
+        vc.zipCode = searchZip
         self.navigationController?.pushViewController(vc, animated: true)
     }
 
+    func deleteAllPets () {
+        // We will keep favorites
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Pet")
+        let predicate = NSPredicate(format: "favorite == NO")
+        fetchRequest.predicate = predicate
+        do {
+            let fetchedEntities = try self.coreDataStack.managedContext.fetch(fetchRequest)
+            
+            for entity in fetchedEntities {
+                self.coreDataStack.managedContext.delete(entity as! NSManagedObject)
+            }
+        } catch {
+            print("Error deleting pets in search controller")
+        }
+        
+        coreDataStack.saveContext()
+    }
 }
