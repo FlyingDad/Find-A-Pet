@@ -14,13 +14,14 @@ final class PetFinderClient {
     var managedContext: NSManagedObjectContext!
     
     // Find pet via location
-    func findPet(location: String, completionHandlerForFindPet: @escaping (_ pet: [String: AnyObject]?, _ error: NSError?) -> Void) {
+    func findPet(location: String, animalType: String, completionHandlerForFindPet: @escaping (_ pet: [String: AnyObject]?, _ error: NSError?) -> Void) {
         
         let methodParameters = [
             PetFinderConstants.ParameterKeys.Key: PetFinderConstants.ParameterValues.ApiKey,
             PetFinderConstants.ParameterKeys.FindPet.Location: location,
-            PetFinderConstants.ParameterKeys.Count: "20", // MARK: TODO
-            PetFinderConstants.ParameterKeys.Format: PetFinderConstants.ParameterValues.FormatJSON
+            PetFinderConstants.ParameterKeys.Count: "25", // MARK: TODO
+            PetFinderConstants.ParameterKeys.Format: PetFinderConstants.ParameterValues.FormatJSON,
+            PetFinderConstants.ParameterKeys.FindPet.Animal: animalType
         ]
         
         let urlString = PetFinderConstants.Url.APIBaseURL + PetFinderConstants.Method.FindPetByLocation

@@ -12,59 +12,86 @@ import CoreData
 class PetViewController: UIViewController {
     
     @IBOutlet weak var age: UILabel!
-    @IBOutlet weak var animal: UILabel!
     @IBOutlet weak var desc: UILabel!
     @IBOutlet weak var mix: UILabel!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var sex: UILabel!
     @IBOutlet weak var size: UILabel!
+    @IBOutlet weak var petImage: UIImageView!
     
-    var managedContext: NSManagedObjectContext!
+    var coreDataStack: CoreDataStack!
     var pet: Pet!
-    //var coreDataHelpers = CoreDataHelpers()
-    
-    //let petStruct: PetStruct!
+
     let petFinderClient = PetFinderClient()
     let swiftyParse = SwiftyParse()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        petFinderClient.getPet { (pet, error) in
-           // print(pet)
-            guard (error == nil) else {
-                print("Get Pet Error: \(error?.localizedDescription)")
-                return
-            }
-            guard let petData = pet else {
-                print("No pet data")
-                return
-            }
-            //self.petFinderClient.managedContext = self.managedContext
-            //self.pet = self.petFinderClient.parsePet(petData: pet)
-            //self.parsePet(petData: pet)
-            
-//            self.pet = self.swiftyParse.parseAndSavePet(petData: petData, managedContext: self.managedContext)
-//            DispatchQueue.main.async {
-//                self.displayPet(pet: self.pet)
-//            }
-        }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        displayPet(pet: pet)
+        let petImageTap = UITapGestureRecognizer(target: self, action: #selector(PetViewController.petImageTapped))
+        petImage.addGestureRecognizer(petImageTap)
+        petImage.isUserInteractionEnabled = true
     }
     
     func displayPet(pet: Pet) {
         
         age.text = pet.age
-        animal.text = pet.animal
-        desc.text = pet.desc
-        mix.text = pet.mix
-        name.text = pet.name
-        sex.text = pet.sex
-        size.text = pet.size
+        //desc.text = pet.desc
+        mix.text = pet.mix?.capitalized
+        name.text = pet.name?.capitalized
+        displayPetImage(pet: pet)
+        if let sex = pet.sex {
+            switch sex {
+                case "M", "m":
+                    self.sex.text = "Male"
+                case "F", "f":
+                    self.sex.text = "Female"
+                default:
+                    self.sex.text = sex
+            }
+
+        }
+        if let size = pet.size {
+            switch size {
+            case "S", "s":
+                self.size.text = "Small"
+            case "M", "m":
+                self.size.text = "Medium"
+            case "L", "l":
+                self.size.text = "Large"
+            default:
+                self.size.text = size
+            }
+        }
+    }
+    
+    func displayPetImage(pet: Pet) {
+        if let images = pet.photos?.allObjects as? [Photos] {
+            print("PetView images count: \(images.count)")
+            
+            if let image = images.first {
+                //print(image)
+                if let image = image.imageData {
+                    self.petImage.image = UIImage(data: image as Data)
+                }
+            }
+        }
+    }
+    
+    func petImageTapped(){
+        let petImagesVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PetImagesViewController") as! PetImagesViewController
+        petImagesVC.coreDataStack = coreDataStack
+        petImagesVC.pet = self.pet
+        print("Segue for \(pet.name)")
+        self.navigationController?.pushViewController(petImagesVC, animated: true)
+    }
+    
+    @IBAction func showDetailedDescription(_ sender: Any) {
+        let detailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailedDescription") as! DescriptionViewController
+        detailVC.petDescription = pet.desc
+        print(pet.desc)
+        self.navigationController?.pushViewController(detailVC, animated: true)
+        
     }
 }
 

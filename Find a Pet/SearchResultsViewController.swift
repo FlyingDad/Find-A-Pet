@@ -38,14 +38,22 @@ class SearchResultsViewController: CoreDataTableViewController {
         
         DispatchQueue.main.async {
             cell.imageActivityIndicator.startAnimating()
+            cell.petImage.image = nil
         }
         
         let pet = fetchedResultsController!.object(at: indexPath) as! Pet
         
         // If there are any photos for this pet, get the first one to display in the cell
         if let photos = pet.photos?.allObjects as? [Photos] {
-
-            if let petImage = photos.first {
+            
+            if photos.count == 0 {
+                DispatchQueue.main.async {
+                    cell.petImage.image = UIImage(named: "nophoto")
+                    cell.imageActivityIndicator.stopAnimating()
+                }
+            }
+            
+            else if let petImage = photos.first {
                 // If image is already saved, display it, else download and save
                 if let petImage = petImage.imageData {
                     let image = UIImage(data: petImage as Data)
@@ -56,6 +64,7 @@ class SearchResultsViewController: CoreDataTableViewController {
                     }
             } else {
                 if let url = petImage.url {
+                    
                     petFinderClient.downloadPhoto(urlString: url) { (imageData, error) in
                         guard (error == nil) else {
                             print("Error downloading photo for cell: \(error!.localizedDescription)")
@@ -66,8 +75,9 @@ class SearchResultsViewController: CoreDataTableViewController {
                         }
                         
                         DispatchQueue.main.async {
-                            cell.petImage.image = image
+                            petImage.imageData = imageData as NSData?
                             self.coreDataStack.saveContext()
+                            cell.petImage.image = image
                             cell.imageActivityIndicator.stopAnimating()
                             }
                         }
@@ -75,36 +85,55 @@ class SearchResultsViewController: CoreDataTableViewController {
                 }
             }
         }
-        
-        if let breeds = pet.breeds?.allObjects as? [Breeds] {
-            for each in breeds{
-                print(each.breed)
-            }
-        }
-
-        if let options = pet.options?.allObjects as? [Options] {
-            //print(options.count)
-            for each in options{
-                print("Options for \(pet.name): \(each.option)")
-            }
-            //print("Options for \(pet.name): \(options[0].option)")
-        }
+//        if let breeds = pet.breeds?.allObjects as? [Breeds] {
+//            for each in breeds{
+//                print(each.breed)
+//            }
+//        }
+//
+//        if let options = pet.options?.allObjects as? [Options] {
+//            //print(options.count)
+//            for each in options{
+//                print("Options for \(pet.name): \(each.option)")
+//            }
+//            //print("Options for \(pet.name): \(options[0].option)")
+//        }
         
         cell.name.text = pet.name
-        cell.animal.text = pet.animal
         cell.age.text = pet.age
-        cell.sex.text = pet.sex
-        //print("Cell \(pet.name)")
+        //cell.sex.text = pet.sex
+        if let sex = pet.sex {
+            switch sex {
+            case "M", "m":
+                cell.sex.text = "Male"
+            case "F", "f":
+                cell.sex.text = "Female"
+            default:
+                cell.sex.text = sex
+            }
+            
+        }
+
         return cell
     }
     
-    func loadPetImages(petId: String){
-        
-
-        
-    }
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let selectedCell = tableView.cellForRow(at: indexPath) as! PetSearchResultCell
+//        selectedCell.contentView.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 87.0/255, alpha: 1.0)
+//    }
+    
+    
     func refresh() {
         tableView.reloadData()
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "PetView" {
+            
+            if let cellIndex = tableView.indexPathForSelectedRow, let pet = fetchedResultsController?.object(at: cellIndex) as? Pet, let petVC = segue.destination as? PetViewController {
+                petVC.pet = pet
+                petVC.coreDataStack = coreDataStack
+            }
+        }
+    }
 }
