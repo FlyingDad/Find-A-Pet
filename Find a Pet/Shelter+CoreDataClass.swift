@@ -1,5 +1,5 @@
 //
-//  Pet+CoreDataClass.swift
+//  Shelter+CoreDataClass.swift
 //  Find a Pet
 //
 //  Created by Michael Kroth on 1/27/17.
@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-@objc(Pet)
-public class Pet: NSManagedObject {
+@objc(Shelter)
+public class Shelter: NSManagedObject {
 
 }

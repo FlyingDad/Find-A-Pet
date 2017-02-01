@@ -17,7 +17,7 @@ class DescriptionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(petDescription)
+        //print(petDescription)
         if petDescription == nil || petDescription == "" {
             detailedText.text = "No description provided"
         } else {

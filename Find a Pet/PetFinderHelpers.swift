@@ -18,7 +18,7 @@ extension PetFinderClient {
             print("Pets found: \(petsArray.count)")
             for eachPet in petsArray {
                 pet = parsePet(petData: eachPet)
-                print(pet.name)
+                //print(pet.name)
             }
         } else {
             print("needs work")

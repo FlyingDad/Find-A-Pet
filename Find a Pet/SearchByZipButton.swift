@@ -14,6 +14,7 @@ class searchByZipButton: UIButton {
         super.draw(rect)
         self.layer.cornerRadius = 8
         self.clipsToBounds = true
+
     }
 
 }

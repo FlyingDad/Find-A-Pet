@@ -25,17 +25,32 @@
         <relationship name="breeds" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Breeds" inverseName="pet" inverseEntity="Breeds" syncable="YES"/>
         <relationship name="options" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Options" inverseName="pet" inverseEntity="Options" syncable="YES"/>
         <relationship name="photos" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Photos" inverseName="pet" inverseEntity="Photos" syncable="YES"/>
+        <relationship name="shelter" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Shelter" inverseName="pet" inverseEntity="Shelter" syncable="YES"/>
     </entity>
     <entity name="Photos" representedClassName="Photos" syncable="YES">
         <attribute name="imageData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="pet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Pet" inverseName="photos" inverseEntity="Pet" syncable="YES"/>
     </entity>
+    <entity name="Shelter" representedClassName="Shelter" syncable="YES">
+        <attribute name="address1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="address2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fax" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="zip" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="pet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Pet" inverseName="shelter" inverseEntity="Pet" syncable="YES"/>
+    </entity>
     <fetchRequest name="FetchAll" entity="Pet"/>
     <elements>
         <element name="Breeds" positionX="-369" positionY="0" width="128" height="73"/>
         <element name="Options" positionX="-47" positionY="258" width="128" height="73"/>
-        <element name="Pet" positionX="-576" positionY="-144" width="128" height="285"/>
+        <element name="Pet" positionX="-576" positionY="-144" width="128" height="300"/>
         <element name="Photos" positionX="-47" positionY="-198" width="128" height="90"/>
+        <element name="Shelter" positionX="-369" positionY="-45" width="128" height="210"/>
     </elements>
 </model>

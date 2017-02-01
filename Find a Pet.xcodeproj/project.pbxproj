@@ -9,20 +9,24 @@
 /* Begin PBXBuildFile section */
 		4C10B2EF1E2BF6F800D39B2C /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C10B2EE1E2BF6F800D39B2C /* SwiftyJSON.swift */; };
 		4C10B2F11E2BF71A00D39B2C /* SwiftyParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C10B2F01E2BF71A00D39B2C /* SwiftyParse.swift */; };
+		4C1995AB1E3BDFFB00C837B9 /* ShelterLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1995AA1E3BDFFB00C837B9 /* ShelterLocationViewController.swift */; };
 		4C30AD701E2D6F3C0079DF9C /* Breeds+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C30AD681E2D6F3C0079DF9C /* Breeds+CoreDataClass.swift */; };
 		4C30AD711E2D6F3C0079DF9C /* Breeds+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C30AD691E2D6F3C0079DF9C /* Breeds+CoreDataProperties.swift */; };
 		4C30AD721E2D6F3C0079DF9C /* Options+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C30AD6A1E2D6F3C0079DF9C /* Options+CoreDataClass.swift */; };
 		4C30AD731E2D6F3C0079DF9C /* Options+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C30AD6B1E2D6F3C0079DF9C /* Options+CoreDataProperties.swift */; };
-		4C30AD741E2D6F3C0079DF9C /* Pet+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C30AD6C1E2D6F3C0079DF9C /* Pet+CoreDataClass.swift */; };
-		4C30AD751E2D6F3C0079DF9C /* Pet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C30AD6D1E2D6F3C0079DF9C /* Pet+CoreDataProperties.swift */; };
 		4C30AD761E2D6F3C0079DF9C /* Photos+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C30AD6E1E2D6F3C0079DF9C /* Photos+CoreDataClass.swift */; };
 		4C30AD771E2D6F3C0079DF9C /* Photos+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C30AD6F1E2D6F3C0079DF9C /* Photos+CoreDataProperties.swift */; };
 		4C380AB51E2584E700669CA3 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C380AB41E2584E700669CA3 /* SearchViewController.swift */; };
 		4C4272D81E38F54E009BC573 /* PetImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4272D71E38F54E009BC573 /* PetImageCollectionViewCell.swift */; };
 		4C4272DA1E3910FB009BC573 /* DescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4272D91E3910FB009BC573 /* DescriptionViewController.swift */; };
 		4C4272DC1E39161A009BC573 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C4272DB1E39161A009BC573 /* Main.storyboard */; };
+		4C4272DE1E3A5574009BC573 /* ZoomPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4272DD1E3A5574009BC573 /* ZoomPhotoViewController.swift */; };
 		4C50AD981E380C8F00952305 /* PetImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C50AD971E380C8F00952305 /* PetImagesViewController.swift */; };
 		4C61129E1E355992002B10E0 /* SearchByZipButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C61129D1E355992002B10E0 /* SearchByZipButton.swift */; };
+		4C7792A41E3BB1BC00684D5F /* Shelter+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7792A01E3BB1BC00684D5F /* Shelter+CoreDataClass.swift */; };
+		4C7792A51E3BB1BC00684D5F /* Shelter+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7792A11E3BB1BC00684D5F /* Shelter+CoreDataProperties.swift */; };
+		4C7792A61E3BB1BC00684D5F /* Pet+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7792A21E3BB1BC00684D5F /* Pet+CoreDataClass.swift */; };
+		4C7792A71E3BB1BC00684D5F /* Pet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7792A31E3BB1BC00684D5F /* Pet+CoreDataProperties.swift */; };
 		4C80DB781E2E85520053AA34 /* PetSearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C80DB771E2E85520053AA34 /* PetSearchResultCell.swift */; };
 		4C80DB7A1E2E8FA20053AA34 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C80DB791E2E8FA20053AA34 /* SearchResultsViewController.swift */; };
 		4C80DB7C1E2E98390053AA34 /* CoreDataTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C80DB7B1E2E98390053AA34 /* CoreDataTableViewController.swift */; };
@@ -40,20 +44,24 @@
 /* Begin PBXFileReference section */
 		4C10B2EE1E2BF6F800D39B2C /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		4C10B2F01E2BF71A00D39B2C /* SwiftyParse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyParse.swift; sourceTree = "<group>"; };
+		4C1995AA1E3BDFFB00C837B9 /* ShelterLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShelterLocationViewController.swift; sourceTree = "<group>"; };
 		4C30AD681E2D6F3C0079DF9C /* Breeds+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Breeds+CoreDataClass.swift"; path = "Find a Pet/Breeds+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4C30AD691E2D6F3C0079DF9C /* Breeds+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Breeds+CoreDataProperties.swift"; path = "Find a Pet/Breeds+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4C30AD6A1E2D6F3C0079DF9C /* Options+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Options+CoreDataClass.swift"; path = "Find a Pet/Options+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4C30AD6B1E2D6F3C0079DF9C /* Options+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Options+CoreDataProperties.swift"; path = "Find a Pet/Options+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		4C30AD6C1E2D6F3C0079DF9C /* Pet+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Pet+CoreDataClass.swift"; path = "Find a Pet/Pet+CoreDataClass.swift"; sourceTree = "<group>"; };
-		4C30AD6D1E2D6F3C0079DF9C /* Pet+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Pet+CoreDataProperties.swift"; path = "Find a Pet/Pet+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4C30AD6E1E2D6F3C0079DF9C /* Photos+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Photos+CoreDataClass.swift"; path = "Find a Pet/Photos+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4C30AD6F1E2D6F3C0079DF9C /* Photos+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Photos+CoreDataProperties.swift"; path = "Find a Pet/Photos+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4C380AB41E2584E700669CA3 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		4C4272D71E38F54E009BC573 /* PetImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		4C4272D91E3910FB009BC573 /* DescriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionViewController.swift; sourceTree = "<group>"; };
 		4C4272DB1E39161A009BC573 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		4C4272DD1E3A5574009BC573 /* ZoomPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomPhotoViewController.swift; sourceTree = "<group>"; };
 		4C50AD971E380C8F00952305 /* PetImagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetImagesViewController.swift; sourceTree = "<group>"; };
 		4C61129D1E355992002B10E0 /* SearchByZipButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchByZipButton.swift; sourceTree = "<group>"; };
+		4C7792A01E3BB1BC00684D5F /* Shelter+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Shelter+CoreDataClass.swift"; path = "Find a Pet/Shelter+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4C7792A11E3BB1BC00684D5F /* Shelter+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Shelter+CoreDataProperties.swift"; path = "Find a Pet/Shelter+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4C7792A21E3BB1BC00684D5F /* Pet+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Pet+CoreDataClass.swift"; path = "Find a Pet/Pet+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4C7792A31E3BB1BC00684D5F /* Pet+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Pet+CoreDataProperties.swift"; path = "Find a Pet/Pet+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4C80DB771E2E85520053AA34 /* PetSearchResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetSearchResultCell.swift; sourceTree = "<group>"; };
 		4C80DB791E2E8FA20053AA34 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		4C80DB7B1E2E98390053AA34 /* CoreDataTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTableViewController.swift; sourceTree = "<group>"; };
@@ -93,12 +101,14 @@
 		4CA3ED421E200E8B00AFEAAA = {
 			isa = PBXGroup;
 			children = (
+				4C7792A01E3BB1BC00684D5F /* Shelter+CoreDataClass.swift */,
+				4C7792A11E3BB1BC00684D5F /* Shelter+CoreDataProperties.swift */,
+				4C7792A21E3BB1BC00684D5F /* Pet+CoreDataClass.swift */,
+				4C7792A31E3BB1BC00684D5F /* Pet+CoreDataProperties.swift */,
 				4C30AD681E2D6F3C0079DF9C /* Breeds+CoreDataClass.swift */,
 				4C30AD691E2D6F3C0079DF9C /* Breeds+CoreDataProperties.swift */,
 				4C30AD6A1E2D6F3C0079DF9C /* Options+CoreDataClass.swift */,
 				4C30AD6B1E2D6F3C0079DF9C /* Options+CoreDataProperties.swift */,
-				4C30AD6C1E2D6F3C0079DF9C /* Pet+CoreDataClass.swift */,
-				4C30AD6D1E2D6F3C0079DF9C /* Pet+CoreDataProperties.swift */,
 				4C30AD6E1E2D6F3C0079DF9C /* Photos+CoreDataClass.swift */,
 				4C30AD6F1E2D6F3C0079DF9C /* Photos+CoreDataProperties.swift */,
 				4CA3ED4D1E200E8B00AFEAAA /* Find a Pet */,
@@ -159,6 +169,8 @@
 				4C80DB791E2E8FA20053AA34 /* SearchResultsViewController.swift */,
 				4C380AB41E2584E700669CA3 /* SearchViewController.swift */,
 				4C4272D91E3910FB009BC573 /* DescriptionViewController.swift */,
+				4C4272DD1E3A5574009BC573 /* ZoomPhotoViewController.swift */,
+				4C1995AA1E3BDFFB00C837B9 /* ShelterLocationViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -250,8 +262,10 @@
 				4CED1D5C1E241FCB00F48238 /* CoreDataStack.swift in Sources */,
 				4CA3ED511E200E8B00AFEAAA /* PetViewController.swift in Sources */,
 				4C913AB21E252EA000A129B9 /* PetFinderHelpers.swift in Sources */,
+				4C4272DE1E3A5574009BC573 /* ZoomPhotoViewController.swift in Sources */,
 				4CA3ED641E20125800AFEAAA /* PetFinderConstants.swift in Sources */,
 				4C30AD771E2D6F3C0079DF9C /* Photos+CoreDataProperties.swift in Sources */,
+				4C7792A41E3BB1BC00684D5F /* Shelter+CoreDataClass.swift in Sources */,
 				4C30AD731E2D6F3C0079DF9C /* Options+CoreDataProperties.swift in Sources */,
 				4CA3ED571E200E8B00AFEAAA /* Find_a_Pet.xcdatamodeld in Sources */,
 				4C4272DA1E3910FB009BC573 /* DescriptionViewController.swift in Sources */,
@@ -259,10 +273,13 @@
 				4C10B2F11E2BF71A00D39B2C /* SwiftyParse.swift in Sources */,
 				4C80DB7A1E2E8FA20053AA34 /* SearchResultsViewController.swift in Sources */,
 				4C30AD711E2D6F3C0079DF9C /* Breeds+CoreDataProperties.swift in Sources */,
+				4C7792A71E3BB1BC00684D5F /* Pet+CoreDataProperties.swift in Sources */,
 				4CA3ED4F1E200E8B00AFEAAA /* AppDelegate.swift in Sources */,
-				4C30AD751E2D6F3C0079DF9C /* Pet+CoreDataProperties.swift in Sources */,
 				4C30AD721E2D6F3C0079DF9C /* Options+CoreDataClass.swift in Sources */,
+				4C7792A61E3BB1BC00684D5F /* Pet+CoreDataClass.swift in Sources */,
+				4C1995AB1E3BDFFB00C837B9 /* ShelterLocationViewController.swift in Sources */,
 				4C80DB7C1E2E98390053AA34 /* CoreDataTableViewController.swift in Sources */,
+				4C7792A51E3BB1BC00684D5F /* Shelter+CoreDataProperties.swift in Sources */,
 				4CA3ED671E20278200AFEAAA /* PetFinderClient.swift in Sources */,
 				4C30AD701E2D6F3C0079DF9C /* Breeds+CoreDataClass.swift in Sources */,
 				4C10B2EF1E2BF6F800D39B2C /* SwiftyJSON.swift in Sources */,
@@ -270,7 +287,6 @@
 				4C4272D81E38F54E009BC573 /* PetImageCollectionViewCell.swift in Sources */,
 				4C30AD761E2D6F3C0079DF9C /* Photos+CoreDataClass.swift in Sources */,
 				4C80DB781E2E85520053AA34 /* PetSearchResultCell.swift in Sources */,
-				4C30AD741E2D6F3C0079DF9C /* Pet+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

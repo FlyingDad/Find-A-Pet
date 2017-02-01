@@ -2,7 +2,7 @@
 //  Pet+CoreDataProperties.swift
 //  Find a Pet
 //
-//  Created by Michael Kroth on 1/20/17.
+//  Created by Michael Kroth on 1/27/17.
 //  Copyright © 2017 MGK Technology Solutions, LLC. All rights reserved.
 //
 
@@ -32,6 +32,7 @@ extension Pet {
     @NSManaged public var breeds: NSSet?
     @NSManaged public var options: NSSet?
     @NSManaged public var photos: NSSet?
+    @NSManaged public var shelter: Shelter?
 
 }
 

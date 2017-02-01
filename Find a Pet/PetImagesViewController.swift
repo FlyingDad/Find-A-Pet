@@ -11,18 +11,19 @@ import CoreData
 
 //private let reuseIdentifier = "PetImageCell"
 
-class PetImagesViewController: UICollectionViewController {
+class PetImagesViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     var coreDataStack: CoreDataStack!
     var pet: Pet!
     var petPhotosArray = [Photos!]()
     var petfinderClient = PetFinderClient()
+    var screenSize: CGRect!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("In PetImagesVC viewDidLoad")
+        //print("In PetImagesVC viewDidLoad")
         getPetImagesArray()
-        print(pet.name)
+        //print(pet.name)
         
                 // Register cell classes
         
@@ -88,6 +89,20 @@ class PetImagesViewController: UICollectionViewController {
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsetsMake(10, 10, 10, 10)
+    }
+    
+//    func adjustFlowLayoutSpacing() {
+//        screenSize = UIScreen.mainScreen().bounds
+//        let spacing : CGFloat = 3.0
+//        let leftRightInset: CGFloat = 3
+//        flowLayout.sectionInset = UIEdgeInsets(top: 20, left: leftRightInset, bottom: 20, right: leftRightInset)
+//        flowLayout.itemSize = CGSize(width: (screenSize.width - (spacing * 3) - 6) / 3, height: (screenSize.width  - (spacing * 3)) / 3)
+//        flowLayout.minimumInteritemSpacing = spacing
+//        flowLayout.minimumLineSpacing = spacing
+//    }
+    
     func getPetImagesArray () {
         if let photosArray = pet.photos?.allObjects as? [Photos] {
             if photosArray.count == 0 {
@@ -100,6 +115,14 @@ class PetImagesViewController: UICollectionViewController {
         }
         
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let cell = sender as? UICollectionViewCell, let indexPath = collectionView?.indexPath(for: cell), let zoomedPhotoViewController = segue.destination as? ZoomPhotoViewController {
+            let petImage = petPhotosArray[indexPath.row]!
+            zoomedPhotoViewController.photo = UIImage(data:petImage.imageData! as Data)
+        }
+    }
+    
+    
 
     // MARK: UICollectionViewDelegate
 

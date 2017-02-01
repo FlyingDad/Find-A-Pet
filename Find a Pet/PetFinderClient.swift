@@ -19,7 +19,7 @@ final class PetFinderClient {
         let methodParameters = [
             PetFinderConstants.ParameterKeys.Key: PetFinderConstants.ParameterValues.ApiKey,
             PetFinderConstants.ParameterKeys.FindPet.Location: location,
-            PetFinderConstants.ParameterKeys.Count: "25", // MARK: TODO
+            PetFinderConstants.ParameterKeys.Count: PetFinderConstants.ParameterValues.MaxCount,
             PetFinderConstants.ParameterKeys.Format: PetFinderConstants.ParameterValues.FormatJSON,
             PetFinderConstants.ParameterKeys.FindPet.Animal: animalType
         ]
@@ -124,6 +124,38 @@ final class PetFinderClient {
             completionHandlerForGetDataTask(parsedResult as AnyObject?, nil)
         }
         task.resume()
+    }
+    
+    func getShelterInfo(shelterId: String, completionHandlerForGetShelterInfo: @escaping(_ shelter: [String: AnyObject]?, _ error: NSError?) -> Void) {
+        let methodParameters = [
+            PetFinderConstants.ParameterKeys.Key: PetFinderConstants.ParameterValues.ApiKey,
+            PetFinderConstants.ParameterKeys.Format: PetFinderConstants.ParameterValues.FormatJSON,
+            PetFinderConstants.ParameterKeys.Id: shelterId
+        ]
+        let urlString = PetFinderConstants.Url.APIBaseURL + PetFinderConstants.Method.GetShelterInfo
+        getDataTask(urlString: urlString + escapedParameters(parameters: methodParameters)) { (data, error) in
+            
+            guard (error == nil) else {
+                completionHandlerForGetShelterInfo(nil, NSError(domain: "getShelterInfo Data Task", code: 0, userInfo: nil))
+                return
+            }
+            
+            self.getRequestStatusCode(data: data!) { (petFinderdata, error) in
+                
+                guard (error == nil) else {
+                    completionHandlerForGetShelterInfo(nil, NSError(domain: "getShelterInfo status code", code: 0, userInfo: nil))
+                    return
+                }
+                
+                // Get pet record in response
+                guard let shelter = petFinderdata?[PetFinderConstants.ResponseKeys.Shelter.Shelter] as? [String: AnyObject] else {
+                    completionHandlerForGetShelterInfo(nil, NSError(domain: "getShelterInfo shelter record", code: 0, userInfo: nil))
+                    return
+                }
+                
+                completionHandlerForGetShelterInfo(shelter, nil)
+            }
+        }
     }
     
     func downloadPhoto(urlString: String, completionHandlerForDownloadPhoto: @escaping(_ result: Data?, _ error: NSError?) -> Void) {

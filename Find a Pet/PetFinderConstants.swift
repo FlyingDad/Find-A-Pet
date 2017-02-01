@@ -43,7 +43,7 @@ struct PetFinderConstants {
     struct ParameterValues {
         static let ApiKey = "e6bc70bd191a1152df8fc462a3ecc179"
         static let FormatJSON = "json"
-        static let MaxCount = "25" // Adjust this later
+        static let MaxCount = "50" // Adjust this later
     }
     
     struct ResponseKeys {
@@ -65,7 +65,7 @@ struct PetFinderConstants {
             static let Age = "age"
             static let Animal = "animal"
             static let Breeds = "breeds"  // Object can have multiple breeds
-            static let Contact = "contact" // Object
+            static let Contact = "contact" 
             static let Desc = "description"
             static let Id = "id"
             static let LastUpdate = "lastUpdate"
@@ -92,6 +92,20 @@ struct PetFinderConstants {
         
         struct Breeds {
             static let Breed = "breed"
+        }
+        
+        struct Shelter {
+            static let Shelter = "shelter"
+            static let Name = "name"
+            static let Phone = "phone"
+            static let State = "state"
+            static let Address1 = "address1"
+            static let Address2 = "address2"
+            static let Email = "email"
+            static let City = "city"
+            static let Zip = "zip"
+            static let Fax = "fax"
+            static let Id = "id"
         }
     }
     

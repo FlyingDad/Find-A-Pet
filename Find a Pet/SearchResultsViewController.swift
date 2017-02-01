@@ -18,7 +18,6 @@ class SearchResultsViewController: CoreDataTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Refresh", style: .plain, target: self, action: #selector(refresh))
         
         title = "Search Results"
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName: "Pet")
@@ -85,29 +84,19 @@ class SearchResultsViewController: CoreDataTableViewController {
                 }
             }
         }
-//        if let breeds = pet.breeds?.allObjects as? [Breeds] {
-//            for each in breeds{
-//                print(each.breed)
-//            }
-//        }
-//
-//        if let options = pet.options?.allObjects as? [Options] {
-//            //print(options.count)
-//            for each in options{
-//                print("Options for \(pet.name): \(each.option)")
-//            }
-//            //print("Options for \(pet.name): \(options[0].option)")
-//        }
+
         
         cell.name.text = pet.name
         cell.age.text = pet.age
-        //cell.sex.text = pet.sex
+
         if let sex = pet.sex {
             switch sex {
             case "M", "m":
                 cell.sex.text = "Male"
             case "F", "f":
                 cell.sex.text = "Female"
+            case "U", "u":
+                cell.sex.text = "Unknown"
             default:
                 cell.sex.text = sex
             }
@@ -117,15 +106,6 @@ class SearchResultsViewController: CoreDataTableViewController {
         return cell
     }
     
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let selectedCell = tableView.cellForRow(at: indexPath) as! PetSearchResultCell
-//        selectedCell.contentView.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 87.0/255, alpha: 1.0)
-//    }
-    
-    
-    func refresh() {
-        tableView.reloadData()
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PetView" {
