@@ -3,7 +3,7 @@
 ![Language](https://img.shields.io/badge/language-Swift%203-orange.svg)
 
 ## Notices
-The current version is working with Xcode Version 7. If you are using different Xcode version, please check out the previous releases. 
+The current version is working with Xcode Version 8.
 
 ## Description
 
