@@ -1,5 +1,12 @@
 # Find a Pet
 
+![Language](https://img.shields.io/badge/language-Swift%203-orange.svg)
+
+## Notices
+The current version is working with Xcode Version 7. If you are using different Xcode version, please check out the previous releases. 
+
+## Description
+
 This project is a Capstone project for the Udacity iOS Developer Nanodegree. It demonstrates the following:
 
 * Multiple views of content
@@ -13,11 +20,7 @@ This project is a Capstone project for the Udacity iOS Developer Nanodegree. It 
 
 ## Installation
 
-TODO: Describe the installation process
-
-## Usage
-
-TODO: Write usage instructions
+You must add your own API Key in PetFinderConstants.swift @ line 44. 
 
 ## Contributing
 
@@ -27,14 +30,3 @@ TODO: Write usage instructions
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request :D
 
-## History
-
-TODO: Write history
-
-## Credits
-
-TODO: Write credits
-
-## License
-
-TODO: Write license
