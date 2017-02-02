@@ -77,7 +77,7 @@ class ShelterLocationViewController: UIViewController {
 
         let phone = shelter.phone
         let trimmedPhone = phone?.trimmingCharacters(in: CharacterSet.decimalDigits.inverted)
-        let phoneNumber = "tel://" + trimmedPhone!
+        let phoneNumber = "telprompt://" + trimmedPhone!
         if let urlPhone = URL(string: phoneNumber) {
             if UIApplication.shared.canOpenURL(urlPhone){
                 UIApplication.shared.open(urlPhone, options: [:], completionHandler: nil)
