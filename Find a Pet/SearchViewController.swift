@@ -92,22 +92,25 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     
     
     func searchForPets(usingZip zip: String) {
-        print("Search in zip: \(zip)")
+        //print("Search in zip: \(zip)")
         
         if isInternetAvailable() {
-        
+
             // need to delete all recoreds here for new search
             self.deleteAllPets()
             DispatchQueue.main.async {
 
                 self.petFinderClient.findPet(location: zip, animalType: self.animalType, completionHandlerForFindPet: { (petsFound, error) in
                     guard (error == nil) else {
-                        print("Get Pet Error: \(error?.localizedDescription)")
+                        print("Get Pet Error: \(error?.code)")
+                        if error?.code == 99 {
+                            self.noResultsAlert()
+                        }
                         return
                     }
                     guard let petsFound = petsFound else {
-                            print("No pet data")
-                    return
+                        print("No pet data")
+                        return
                     }
             
                     self.swiftyParse.parseFoundPets(petsFound: petsFound, zipCode: zip, coreDataStack: self.coreDataStack)
@@ -118,7 +121,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
             vc.coreDataStack = coreDataStack
             vc.zipCode = zip
             self.navigationController?.pushViewController(vc, animated: true)
-            
+
         } else {
             self.noInternetAlert()
         }
@@ -264,6 +267,14 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         let isReachable = (flags.rawValue & UInt32(kSCNetworkFlagsReachable)) != 0
         let needsConnection = (flags.rawValue & UInt32(kSCNetworkFlagsConnectionRequired)) != 0
         return (isReachable && !needsConnection)
+    }
+    
+    func noResultsAlert() {
+        let alert = UIAlertController(title: "No Results", message: "Verify a valid zip code was entered", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     
