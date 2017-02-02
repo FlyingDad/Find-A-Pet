@@ -30,7 +30,6 @@
 		4C80DB781E2E85520053AA34 /* PetSearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C80DB771E2E85520053AA34 /* PetSearchResultCell.swift */; };
 		4C80DB7A1E2E8FA20053AA34 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C80DB791E2E8FA20053AA34 /* SearchResultsViewController.swift */; };
 		4C80DB7C1E2E98390053AA34 /* CoreDataTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C80DB7B1E2E98390053AA34 /* CoreDataTableViewController.swift */; };
-		4C913AB21E252EA000A129B9 /* PetFinderHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C913AB11E252EA000A129B9 /* PetFinderHelpers.swift */; };
 		4CA3ED4F1E200E8B00AFEAAA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA3ED4E1E200E8B00AFEAAA /* AppDelegate.swift */; };
 		4CA3ED511E200E8B00AFEAAA /* PetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA3ED501E200E8B00AFEAAA /* PetViewController.swift */; };
 		4CA3ED571E200E8B00AFEAAA /* Find_a_Pet.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4CA3ED551E200E8B00AFEAAA /* Find_a_Pet.xcdatamodeld */; };
@@ -65,7 +64,6 @@
 		4C80DB771E2E85520053AA34 /* PetSearchResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetSearchResultCell.swift; sourceTree = "<group>"; };
 		4C80DB791E2E8FA20053AA34 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		4C80DB7B1E2E98390053AA34 /* CoreDataTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTableViewController.swift; sourceTree = "<group>"; };
-		4C913AB11E252EA000A129B9 /* PetFinderHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetFinderHelpers.swift; sourceTree = "<group>"; };
 		4CA3ED4B1E200E8B00AFEAAA /* Find a Pet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Find a Pet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CA3ED4E1E200E8B00AFEAAA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CA3ED501E200E8B00AFEAAA /* PetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetViewController.swift; sourceTree = "<group>"; };
@@ -147,7 +145,6 @@
 			children = (
 				4CA3ED631E20125800AFEAAA /* PetFinderConstants.swift */,
 				4CA3ED661E20278200AFEAAA /* PetFinderClient.swift */,
-				4C913AB11E252EA000A129B9 /* PetFinderHelpers.swift */,
 			);
 			name = Client;
 			sourceTree = "<group>";
@@ -261,7 +258,6 @@
 				4C50AD981E380C8F00952305 /* PetImagesViewController.swift in Sources */,
 				4CED1D5C1E241FCB00F48238 /* CoreDataStack.swift in Sources */,
 				4CA3ED511E200E8B00AFEAAA /* PetViewController.swift in Sources */,
-				4C913AB21E252EA000A129B9 /* PetFinderHelpers.swift in Sources */,
 				4C4272DE1E3A5574009BC573 /* ZoomPhotoViewController.swift in Sources */,
 				4CA3ED641E20125800AFEAAA /* PetFinderConstants.swift in Sources */,
 				4C30AD771E2D6F3C0079DF9C /* Photos+CoreDataProperties.swift in Sources */,
