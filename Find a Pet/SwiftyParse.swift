@@ -17,7 +17,6 @@ class SwiftyParse {
         
         let json = JSON(petsFound)
         let petsArray = json[PetFinderConstants.ResponseKeys.PetRecord]
-        //print(petsArray)
         
         for (_, petData):(String, JSON) in petsArray {
             parseAndSavePet(json: petData, zipCode: zipCode,coreDataStack: coreDataStack)
@@ -29,11 +28,31 @@ class SwiftyParse {
         
         DispatchQueue.main.async {
             
+            // First lets check if the pet exists in core data (by pet id)
+            // If it does, we'll skip to the next pet
+            
+            let petId = json[PetFinderConstants.ResponseKeys.Pet.Id][PetFinderConstants.ResponseKeys.General.MysteryT].stringValue
+            let fr = NSFetchRequest<NSManagedObject>(entityName: "Pet")
+            let predicate = NSPredicate(format: "id = %@", petId)
+            fr.predicate = predicate
+            var savedPet = 0
+            do {
+                savedPet = try coreDataStack.managedContext.count(for: fr)
+            } catch let error as NSError {
+                print("Could not fetch. \(error), \(error.userInfo)")
+            }
+
+            if savedPet > 0 {
+                return
+            }
+            // End of check for existing pet ------------------------
+            
             let pet = NSEntityDescription.insertNewObject(forEntityName: "Pet", into: coreDataStack.managedContext) as! Pet
+            pet.id = petId
             pet.zipCode = zipCode
             pet.name = json[PetFinderConstants.ResponseKeys.Pet.Name][PetFinderConstants.ResponseKeys.General.MysteryT].stringValue
             pet.age = json[PetFinderConstants.ResponseKeys.Pet.Age][PetFinderConstants.ResponseKeys.General.MysteryT].stringValue
-            pet.animal = json[PetFinderConstants.ResponseKeys.Pet.Animal][PetFinderConstants.ResponseKeys.General.MysteryT].stringValue
+            pet.animal = json[PetFinderConstants.ResponseKeys.Pet.Animal][PetFinderConstants.ResponseKeys.General.MysteryT].stringValue.lowercased()
             pet.desc = json[PetFinderConstants.ResponseKeys.Pet.Desc][PetFinderConstants.ResponseKeys.General.MysteryT].stringValue
             pet.id = json[PetFinderConstants.ResponseKeys.Pet.Id][PetFinderConstants.ResponseKeys.General.MysteryT].stringValue
             pet.lastUpdate = json[PetFinderConstants.ResponseKeys.Pet.LastUpdate][PetFinderConstants.ResponseKeys.General.MysteryT].stringValue
@@ -45,20 +64,17 @@ class SwiftyParse {
             
             
             let photoArray = json[PetFinderConstants.ResponseKeys.Pet.Media][PetFinderConstants.ResponseKeys.Pet.Photos][PetFinderConstants.ResponseKeys.Photo.Photo]
-            //print(photoArray)
+
             for (_, photoData):(String, JSON) in photoArray {
-                //print("loop index: \(index)")
+
                 if photoData[PetFinderConstants.ResponseKeys.Photo.size].string == PetFinderConstants.ResponseValues.Photo.sizeXL {
-                    //let photoEntity = NSEntityDescription.entity(forEntityName: "Photos", in: coreDataStack.managedContext)!
+                    
                     let photo = NSEntityDescription.insertNewObject(forEntityName: "Photos", into: coreDataStack.managedContext) as! Photos
                     
-                    //print(photoData[PetFinderConstants.ResponseKeys.General.MysteryT])
                     photo.url = photoData[PetFinderConstants.ResponseKeys.General.MysteryT].stringValue
-                    //print(photo.url)
                     photo.pet = pet
                     
                     pet.addToPhotos(photo)
-                    //print("saving pet photo for \(pet.name) index \(index)")
                     
                 }
             }
@@ -67,15 +83,11 @@ class SwiftyParse {
                 for option in optionArray {
                     let options = NSEntityDescription.insertNewObject(forEntityName: "Options", into: coreDataStack.managedContext) as! Options
                     options.option = option[PetFinderConstants.ResponseKeys.General.MysteryT].stringValue
-                    //options.pet = pet
-                    //print(options.option!)
                     pet.addToOptions(options)
                 }
             } else if let optionsDict = json[PetFinderConstants.ResponseKeys.Pet.Options][PetFinderConstants.ResponseKeys.Option.Option].dictionary {
                 let options = NSEntityDescription.insertNewObject(forEntityName: "Options", into: coreDataStack.managedContext) as! Options
                 options.option = optionsDict[PetFinderConstants.ResponseKeys.General.MysteryT]?.stringValue
-                //options.pet = pet
-                //print(options.option!)
                 pet.addToOptions(options)
             }
             
@@ -87,7 +99,6 @@ class SwiftyParse {
                     let breeds = NSEntityDescription.insertNewObject(forEntityName: "Breeds", into: coreDataStack.managedContext) as! Breeds
                     breeds.breed = breed[PetFinderConstants.ResponseKeys.General.MysteryT].stringValue
                     pet.addToBreeds(breeds)
-                    //print(breeds.breed!)
                 }
             } else if let breedsDict = json[PetFinderConstants.ResponseKeys.Pet.Breeds][PetFinderConstants.ResponseKeys.Breeds.Breed].dictionary {
                 let breeds = NSEntityDescription.insertNewObject(forEntityName: "Breeds", into: coreDataStack.managedContext) as! Breeds
@@ -121,7 +132,7 @@ class SwiftyParse {
                         shelter.zip = shelterDict[PetFinderConstants.ResponseKeys.Shelter.Zip][PetFinderConstants.ResponseKeys.General.MysteryT].stringValue
                         shelter.fax = shelterDict[PetFinderConstants.ResponseKeys.Shelter.Fax][PetFinderConstants.ResponseKeys.General.MysteryT].stringValue
                         shelter.id = shelterDict[PetFinderConstants.ResponseKeys.Shelter.Id][PetFinderConstants.ResponseKeys.General.MysteryT].stringValue
-                        //let shelter = self.parseAndSaveShelter(shelter: shelterInfo, coreDataStack: coreDataStack)
+
                         pet.shelter = shelter
                     }
                 })
