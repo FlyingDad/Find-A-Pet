@@ -43,10 +43,8 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("In view did load")
         zipCodeLastSearched = UserDefaults.standard.value(forKey: "zipCodeLastSearched") as! String!
         animalTypeLastSearched = UserDefaults.standard.value(forKey: "animalTypeLastSearched") as! String!
-        print("Last searched: \(zipCodeLastSearched) - \(animalTypeLastSearched)")
         zipCode.text = zipCodeLastSearched
         
         // This will dismiss the keyboard if tap outside of zip code textfield
@@ -80,9 +78,11 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         if gpsZip != nil || gpsZip != "" && usingGPS {
             usingGPS = true
             if zipCodeLastSearched != gpsZip {
-                searchForPets(usingZip: gpsZip, newZip: false)
+                zipCodeLastSearched = gpsZip
+                searchForPets(usingZip: gpsZip, newZip: true)
             } else {
-                searchForPets(usingZip: "", newZip: true)
+                animalTypeLastSearched = gpsZip
+                searchForPets(usingZip: gpsZip, newZip: false)
             }
         } else {
             self.alert(title: "No Location Data", message: "Please verify location services are enabled and try again", actionTitle: "Dismiss")
@@ -91,18 +91,15 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     
     
     @IBAction func searchByZip(_ sender: Any) {
-        print("In searchByZip function")
         
         zipCode.resignFirstResponder()
         
         let searchZip = zipCode.text
-        print("Manual zip: \(searchZip)")
         if searchZip?.characters.count != 5 {
             alert(title: "Invalid Zip Code", message: "Please enter a valid five digit zipcode", actionTitle: "Try Again")
             searchView.isHidden = false
             return
         }
-        print("Picker: \(animalType) - Last Searched: \(animalTypeLastSearched)")
         
         if zipCodeLastSearched != searchZip {
             zipCodeLastSearched = searchZip
@@ -129,7 +126,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
             }
             searchView.isHidden = true
             searchActivity.startAnimating()
-                print("calling findpet with: \(zip) - \(animalType)")
+
                 self.petFinderClient.findPet(location: zip, animalType: self.animalType, completionHandlerForFindPet: { (petsFound, error) in
                     guard (error == nil) else {
                         print("Get Pet Error: \(error?.code) : \(error)")
