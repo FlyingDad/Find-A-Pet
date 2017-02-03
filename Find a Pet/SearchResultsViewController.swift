@@ -12,7 +12,7 @@ import CoreData
 class SearchResultsViewController: CoreDataTableViewController {
     
     var coreDataStack: CoreDataStack!
-    var zipCode: String!
+    var animalType: String!
     let petFinderClient = PetFinderClient()
     let swiftyParse = SwiftyParse()
     
@@ -21,7 +21,10 @@ class SearchResultsViewController: CoreDataTableViewController {
         
         title = "Search Results"
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName: "Pet")
-        let predicate = NSPredicate(format: "zipCode = %@", zipCode)
+        if animalType == "smallfurry" {
+            animalType = "small & furry"
+        }
+        let predicate = NSPredicate(format: "animal = %@", animalType)
         fr.predicate = predicate
         fr.sortDescriptors = []
         fetchedResultsController = NSFetchedResultsController(
@@ -88,7 +91,6 @@ class SearchResultsViewController: CoreDataTableViewController {
         
         cell.name.text = pet.name
         cell.age.text = pet.age
-
         if let sex = pet.sex {
             switch sex {
             case "M", "m":
