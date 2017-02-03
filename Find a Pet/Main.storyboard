@@ -486,118 +486,155 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ijd-M3-VPR">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="avc-5f-0IQ" userLabel="Activity View">
+                                <rect key="frame" x="20" y="64" width="374" height="672"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="9FF-bm-I3o">
+                                        <rect key="frame" x="152" y="301" width="70" height="70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="70" id="9Y7-Wb-0VB"/>
+                                            <constraint firstAttribute="height" constant="70" id="KPg-Tu-aIE"/>
+                                        </constraints>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="9FF-bm-I3o" firstAttribute="centerX" secondItem="avc-5f-0IQ" secondAttribute="centerX" id="fHJ-w3-Fqr"/>
+                                    <constraint firstItem="9FF-bm-I3o" firstAttribute="centerY" secondItem="avc-5f-0IQ" secondAttribute="centerY" id="uyc-vY-h5L"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w3A-OQ-9x7" userLabel="Search View">
                                 <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mAv-RY-kMR">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="488"/>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ijd-M3-VPR">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="rFY-LS-3Hw">
-                                                <rect key="frame" x="8" y="24" width="398" height="456"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mAv-RY-kMR">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="488"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="yXa-XH-fss">
-                                                        <rect key="frame" x="0.0" y="0.0" width="398" height="456"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="rFY-LS-3Hw">
+                                                        <rect key="frame" x="8" y="24" width="398" height="456"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select an animal type:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PQI-0X-BUu">
-                                                                <rect key="frame" x="100.33333333333334" y="0.0" width="197.66666666666666" height="30"/>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="yXa-XH-fss">
+                                                                <rect key="frame" x="0.0" y="0.0" width="398" height="456"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select an animal type:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PQI-0X-BUu">
+                                                                        <rect key="frame" x="100.33333333333334" y="0.0" width="197.66666666666666" height="30"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="30" id="POp-UD-YSu"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                                                        <color key="textColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HeY-T3-CUO">
+                                                                        <rect key="frame" x="61.666666666666686" y="38" width="275" height="216"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="275" id="xlQ-cZ-M7Q"/>
+                                                                        </constraints>
+                                                                        <connections>
+                                                                            <outlet property="dataSource" destination="FF1-Wf-INo" id="EBY-bf-R2s"/>
+                                                                            <outlet property="delegate" destination="FF1-Wf-INo" id="ErI-eH-XF9"/>
+                                                                        </connections>
+                                                                    </pickerView>
+                                                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sof-5o-Ok4" customClass="searchByZipButton" customModule="Find_a_Pet" customModuleProvider="target">
+                                                                        <rect key="frame" x="55" y="262" width="288" height="40"/>
+                                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                                                        <inset key="contentEdgeInsets" minX="25" minY="8" maxX="25" maxY="8"/>
+                                                                        <state key="normal" title="Search using your location"/>
+                                                                        <connections>
+                                                                            <action selector="searchUsingGps:" destination="FF1-Wf-INo" eventType="touchUpInside" id="sB7-8N-Byo"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5o-ZW-YI7" customClass="searchByZipButton" customModule="Find_a_Pet" customModuleProvider="target">
+                                                                        <rect key="frame" x="88" y="310" width="222" height="40"/>
+                                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                                                        <inset key="contentEdgeInsets" minX="25" minY="8" maxX="25" maxY="8"/>
+                                                                        <state key="normal" title="Search by zip code"/>
+                                                                        <connections>
+                                                                            <action selector="searchByZip:" destination="FF1-Wf-INo" eventType="touchUpInside" id="IlW-na-MLq"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="95014" borderStyle="roundedRect" placeholder="95014" textAlignment="center" clearsOnBeginEditing="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6qX-0d-PXu">
+                                                                        <rect key="frame" x="160.66666666666666" y="358" width="77" height="30"/>
+                                                                        <nil key="textColor"/>
+                                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                                        <connections>
+                                                                            <outlet property="delegate" destination="FF1-Wf-INo" id="xEv-uI-1Al"/>
+                                                                        </connections>
+                                                                    </textField>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hdf-aE-SI8">
+                                                                        <rect key="frame" x="116.66666666666669" y="396" width="165" height="60"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="60" id="t50-K3-dmp"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                                        <state key="normal" title="Powered by Petfinder">
+                                                                            <color key="titleColor" red="0.25098040700000002" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        </state>
+                                                                        <connections>
+                                                                            <action selector="petfinderSite:" destination="FF1-Wf-INo" eventType="touchUpInside" id="X4Q-AT-oKU"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="30" id="POp-UD-YSu"/>
+                                                                    <constraint firstItem="6qX-0d-PXu" firstAttribute="top" secondItem="h5o-ZW-YI7" secondAttribute="bottom" constant="8" id="N1v-ND-X21"/>
+                                                                    <constraint firstItem="Sof-5o-Ok4" firstAttribute="centerX" secondItem="yXa-XH-fss" secondAttribute="centerX" id="frd-ig-wNw"/>
+                                                                    <constraint firstItem="Sof-5o-Ok4" firstAttribute="top" secondItem="HeY-T3-CUO" secondAttribute="bottom" constant="8" id="h8w-JE-bWf"/>
+                                                                    <constraint firstItem="h5o-ZW-YI7" firstAttribute="top" secondItem="Sof-5o-Ok4" secondAttribute="bottom" constant="8" id="pAh-rh-sdL"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                                                                <color key="textColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HeY-T3-CUO">
-                                                                <rect key="frame" x="61.666666666666686" y="38" width="275" height="216"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="275" id="xlQ-cZ-M7Q"/>
-                                                                </constraints>
-                                                                <connections>
-                                                                    <outlet property="dataSource" destination="FF1-Wf-INo" id="EBY-bf-R2s"/>
-                                                                    <outlet property="delegate" destination="FF1-Wf-INo" id="ErI-eH-XF9"/>
-                                                                </connections>
-                                                            </pickerView>
-                                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sof-5o-Ok4" customClass="searchByZipButton" customModule="Find_a_Pet" customModuleProvider="target">
-                                                                <rect key="frame" x="55" y="262" width="288" height="40"/>
-                                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                                                                <inset key="contentEdgeInsets" minX="25" minY="8" maxX="25" maxY="8"/>
-                                                                <state key="normal" title="Search using your location"/>
-                                                                <connections>
-                                                                    <action selector="searchUsingGps:" destination="FF1-Wf-INo" eventType="touchUpInside" id="sB7-8N-Byo"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5o-ZW-YI7" customClass="searchByZipButton" customModule="Find_a_Pet" customModuleProvider="target">
-                                                                <rect key="frame" x="88" y="310" width="222" height="40"/>
-                                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                                                                <inset key="contentEdgeInsets" minX="25" minY="8" maxX="25" maxY="8"/>
-                                                                <state key="normal" title="Search by zip code"/>
-                                                                <connections>
-                                                                    <action selector="searchByZip:" destination="FF1-Wf-INo" eventType="touchUpInside" id="IlW-na-MLq"/>
-                                                                </connections>
-                                                            </button>
-                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="95014" borderStyle="roundedRect" placeholder="95014" textAlignment="center" clearsOnBeginEditing="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6qX-0d-PXu">
-                                                                <rect key="frame" x="160.66666666666666" y="358" width="77" height="30"/>
-                                                                <nil key="textColor"/>
-                                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                                                <connections>
-                                                                    <outlet property="delegate" destination="FF1-Wf-INo" id="xEv-uI-1Al"/>
-                                                                </connections>
-                                                            </textField>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hdf-aE-SI8">
-                                                                <rect key="frame" x="116.66666666666669" y="396" width="165" height="60"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="60" id="t50-K3-dmp"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                                                <state key="normal" title="Powered by Petfinder">
-                                                                    <color key="titleColor" red="0.25098040700000002" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                                </state>
-                                                                <connections>
-                                                                    <action selector="petfinderSite:" destination="FF1-Wf-INo" eventType="touchUpInside" id="X4Q-AT-oKU"/>
-                                                                </connections>
-                                                            </button>
+                                                            </stackView>
                                                         </subviews>
-                                                        <constraints>
-                                                            <constraint firstItem="6qX-0d-PXu" firstAttribute="top" secondItem="h5o-ZW-YI7" secondAttribute="bottom" constant="8" id="N1v-ND-X21"/>
-                                                            <constraint firstItem="Sof-5o-Ok4" firstAttribute="centerX" secondItem="yXa-XH-fss" secondAttribute="centerX" id="frd-ig-wNw"/>
-                                                            <constraint firstItem="Sof-5o-Ok4" firstAttribute="top" secondItem="HeY-T3-CUO" secondAttribute="bottom" constant="8" id="h8w-JE-bWf"/>
-                                                            <constraint firstItem="h5o-ZW-YI7" firstAttribute="top" secondItem="Sof-5o-Ok4" secondAttribute="bottom" constant="8" id="pAh-rh-sdL"/>
-                                                        </constraints>
                                                     </stackView>
                                                 </subviews>
-                                            </stackView>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstItem="rFY-LS-3Hw" firstAttribute="leading" secondItem="mAv-RY-kMR" secondAttribute="leading" constant="8" id="1yK-oa-XXO"/>
+                                                    <constraint firstItem="rFY-LS-3Hw" firstAttribute="top" secondItem="mAv-RY-kMR" secondAttribute="top" constant="24" id="LQR-Uv-X9w"/>
+                                                    <constraint firstAttribute="bottom" secondItem="rFY-LS-3Hw" secondAttribute="bottom" constant="8" id="UVb-k0-cUd"/>
+                                                    <constraint firstAttribute="trailing" secondItem="rFY-LS-3Hw" secondAttribute="trailing" constant="8" id="n46-A2-Gg7"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="rFY-LS-3Hw" firstAttribute="leading" secondItem="mAv-RY-kMR" secondAttribute="leading" constant="8" id="1yK-oa-XXO"/>
-                                            <constraint firstItem="rFY-LS-3Hw" firstAttribute="top" secondItem="mAv-RY-kMR" secondAttribute="top" constant="24" id="LQR-Uv-X9w"/>
-                                            <constraint firstAttribute="bottom" secondItem="rFY-LS-3Hw" secondAttribute="bottom" constant="8" id="UVb-k0-cUd"/>
-                                            <constraint firstAttribute="trailing" secondItem="rFY-LS-3Hw" secondAttribute="trailing" constant="8" id="n46-A2-Gg7"/>
+                                            <constraint firstAttribute="trailing" secondItem="mAv-RY-kMR" secondAttribute="trailing" id="902-YS-aQT"/>
+                                            <constraint firstItem="mAv-RY-kMR" firstAttribute="top" secondItem="ijd-M3-VPR" secondAttribute="top" id="aCg-wg-q2p"/>
+                                            <constraint firstAttribute="bottom" secondItem="mAv-RY-kMR" secondAttribute="bottom" id="oT5-tu-GMQ"/>
+                                            <constraint firstItem="mAv-RY-kMR" firstAttribute="leading" secondItem="ijd-M3-VPR" secondAttribute="leading" id="vbC-Rf-cbp"/>
                                         </constraints>
-                                    </view>
+                                    </scrollView>
                                 </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="mAv-RY-kMR" secondAttribute="trailing" id="FcM-V9-BbO"/>
-                                    <constraint firstAttribute="bottom" secondItem="mAv-RY-kMR" secondAttribute="bottom" id="iKR-1H-qS6"/>
-                                    <constraint firstItem="mAv-RY-kMR" firstAttribute="top" secondItem="ijd-M3-VPR" secondAttribute="top" id="ll6-3C-QtA"/>
-                                    <constraint firstItem="mAv-RY-kMR" firstAttribute="leading" secondItem="ijd-M3-VPR" secondAttribute="leading" id="xNv-op-eAh"/>
+                                    <constraint firstItem="ijd-M3-VPR" firstAttribute="top" secondItem="w3A-OQ-9x7" secondAttribute="top" id="09p-C4-J84"/>
+                                    <constraint firstAttribute="trailing" secondItem="ijd-M3-VPR" secondAttribute="trailing" id="R3l-DQ-2Oa"/>
+                                    <constraint firstItem="ijd-M3-VPR" firstAttribute="leading" secondItem="w3A-OQ-9x7" secondAttribute="leading" id="eRO-cL-OmQ"/>
+                                    <constraint firstItem="mAv-RY-kMR" firstAttribute="width" secondItem="w3A-OQ-9x7" secondAttribute="width" id="kff-Qx-iQP"/>
+                                    <constraint firstAttribute="bottom" secondItem="ijd-M3-VPR" secondAttribute="bottom" id="xub-fZ-by3"/>
                                 </constraints>
-                            </scrollView>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ijd-M3-VPR" firstAttribute="leading" secondItem="Nu0-6I-000" secondAttribute="leading" id="ACI-fI-Xlr"/>
-                            <constraint firstItem="ijd-M3-VPR" firstAttribute="top" secondItem="vui-HG-w06" secondAttribute="bottom" id="Rkc-2k-ofC"/>
-                            <constraint firstItem="tLE-mh-YFy" firstAttribute="top" secondItem="ijd-M3-VPR" secondAttribute="bottom" id="STh-Vr-fBX"/>
-                            <constraint firstAttribute="trailing" secondItem="ijd-M3-VPR" secondAttribute="trailing" id="YzZ-o6-hKK"/>
-                            <constraint firstItem="mAv-RY-kMR" firstAttribute="width" secondItem="Nu0-6I-000" secondAttribute="width" id="emK-6l-bCq"/>
+                            <constraint firstItem="ijd-M3-VPR" firstAttribute="width" secondItem="Nu0-6I-000" secondAttribute="width" id="Edd-dW-tEx"/>
+                            <constraint firstItem="w3A-OQ-9x7" firstAttribute="leading" secondItem="Nu0-6I-000" secondAttribute="leading" id="Gzu-sL-pBE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="avc-5f-0IQ" secondAttribute="trailing" id="ILM-XT-HEP"/>
+                            <constraint firstItem="w3A-OQ-9x7" firstAttribute="top" secondItem="vui-HG-w06" secondAttribute="bottom" id="PBl-Dl-ByJ"/>
+                            <constraint firstItem="avc-5f-0IQ" firstAttribute="leading" secondItem="Nu0-6I-000" secondAttribute="leadingMargin" id="VEB-Qe-zMY"/>
+                            <constraint firstItem="avc-5f-0IQ" firstAttribute="top" secondItem="vui-HG-w06" secondAttribute="bottom" id="asn-zf-Qwg"/>
+                            <constraint firstItem="tLE-mh-YFy" firstAttribute="top" secondItem="w3A-OQ-9x7" secondAttribute="bottom" id="c6N-RY-ae3"/>
+                            <constraint firstItem="tLE-mh-YFy" firstAttribute="top" secondItem="avc-5f-0IQ" secondAttribute="bottom" id="cX3-K9-O4G"/>
+                            <constraint firstAttribute="trailing" secondItem="w3A-OQ-9x7" secondAttribute="trailing" id="vlR-Yh-xZX"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Find a Pet" id="hgo-Ge-rdE"/>
                     <connections>
+                        <outlet property="activityView" destination="avc-5f-0IQ" id="Y0s-PH-lMr"/>
                         <outlet property="animalViewPicker" destination="HeY-T3-CUO" id="YJz-mg-t9W"/>
+                        <outlet property="searchActivity" destination="9FF-bm-I3o" id="2jN-zg-vnU"/>
                         <outlet property="searchUsingLocation" destination="Sof-5o-Ok4" id="M46-qE-Yje"/>
+                        <outlet property="searchView" destination="w3A-OQ-9x7" id="G17-4i-XXd"/>
                         <outlet property="zipCode" destination="6qX-0d-PXu" id="CfC-I5-4yv"/>
                         <segue destination="v7W-2e-9fe" kind="show" identifier="SearchResults" id="5wg-Ag-c47"/>
                     </connections>
@@ -620,7 +657,7 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="136"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="afm-vv-hCA" id="ve2-Q7-115">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="135"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="135.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" translatesAutoresizingMaskIntoConstraints="NO" id="2TK-Zd-ZOq">

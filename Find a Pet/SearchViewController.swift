@@ -16,6 +16,10 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     @IBOutlet weak var zipCode: UITextField!
     @IBOutlet weak var animalViewPicker: UIPickerView!
     @IBOutlet weak var searchUsingLocation: searchByZipButton!
+    @IBOutlet weak var searchActivity: UIActivityIndicatorView!
+
+    @IBOutlet weak var activityView: UIView!
+    @IBOutlet weak var searchView: UIView!
     
     var animalTypePickerData = [String]()
     var animalTypeRawData = [String]()
@@ -84,7 +88,6 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         print("Manual zip: \(searchZip)")
         if searchZip?.characters.count != 5 {
             alert(title: "Invaslid Zip Code", message: "Please enter a valid five digit zipcode", actionTitle: "Try Again")
-            zipCode.becomeFirstResponder()
             return
         }
         searchForPets(usingZip: searchZip!)
@@ -96,10 +99,10 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         
         if isInternetAvailable() {
 
-            // need to delete all recoreds here for new search
+            // need to delete all records here for new search
             self.deleteAllPets()
-            DispatchQueue.main.async {
-
+            searchView.isHidden = true
+            searchActivity.startAnimating()
                 self.petFinderClient.findPet(location: zip, animalType: self.animalType, completionHandlerForFindPet: { (petsFound, error) in
                     guard (error == nil) else {
                         print("Get Pet Error: \(error?.code)")
@@ -114,13 +117,17 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
                     }
             
                     self.swiftyParse.parseFoundPets(petsFound: petsFound, zipCode: zip, coreDataStack: self.coreDataStack)
+                
+                    DispatchQueue.main.async {
+                      
+                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SearchResultsViewController") as! SearchResultsViewController
+                        vc.coreDataStack = self.coreDataStack
+                        vc.zipCode = zip
+                        self.navigationController?.pushViewController(vc, animated: true)
+                        self.searchView.isHidden = false
+                        self.searchActivity.stopAnimating()
+                    }
                 })
-            }
-
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "SearchResultsViewController") as! SearchResultsViewController
-            vc.coreDataStack = coreDataStack
-            vc.zipCode = zip
-            self.navigationController?.pushViewController(vc, animated: true)
 
         } else {
             self.alert(title: "No Internet Connection", message: "Please connect to the Internet and try again.", actionTitle: "Dismiss")
@@ -165,10 +172,10 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         return true
     }
     
-    // Shift view up when editin bottom text field so it's not hidden keyboard
+    // Shift view up when editing bottom text field so it's not hidden by the keyboard
     func keyboardWillShow(notification: NSNotification ) {
         if zipCode.isEditing {
-            view.frame.origin.y = getKeyboardHeight(notification: notification) * (-1)
+            view.frame.origin.y = -getKeyboardHeight(notification: notification)
         }
     }
     
