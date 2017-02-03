@@ -70,7 +70,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
             usingGPS = true
             searchForPets(usingZip: gpsZip)
         } else {
-            self.noGpsAlert()
+            self.alert(title: "No Location Data", message: "Please verify location services are enabled and try again", actionTitle: "Dismiss")
         }
     }
     
@@ -83,7 +83,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         let searchZip = zipCode.text
         print("Manual zip: \(searchZip)")
         if searchZip?.characters.count != 5 {
-            zipcodeAlert()
+            alert(title: "Invaslid Zip Code", message: "Please enter a valid five digit zipcode", actionTitle: "Try Again")
             zipCode.becomeFirstResponder()
             return
         }
@@ -104,7 +104,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
                     guard (error == nil) else {
                         print("Get Pet Error: \(error?.code)")
                         if error?.code == 99 {
-                            self.noResultsAlert()
+                            self.alert(title: "No Results", message: "Verify a valid zip code was entered", actionTitle: "Dismiss")
                         }
                         return
                     }
@@ -123,7 +123,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
             self.navigationController?.pushViewController(vc, animated: true)
 
         } else {
-            self.noInternetAlert()
+            self.alert(title: "No Internet Connection", message: "Please connect to the Internet and try again.", actionTitle: "Dismiss")
         }
     }
 
@@ -269,40 +269,19 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         return (isReachable && !needsConnection)
     }
     
-    func noResultsAlert() {
-        let alert = UIAlertController(title: "No Results", message: "Verify a valid zip code was entered", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
-        DispatchQueue.main.async {
-            self.present(alert, animated: true, completion: nil)
-        }
-    }
-    
-    
-    func noInternetAlert() {
-        let alert = UIAlertController(title: "No Internet Connection", message: "Please connect to the Internet and try again.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
-        DispatchQueue.main.async {
-            self.present(alert, animated: true, completion: nil)
-        }
-    }
-    
-    
-    func noGpsAlert() {
-        let alert = UIAlertController(title: "No Location Data", message: "Please verify location services are enabled and try again", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
-        DispatchQueue.main.async {
-            self.present(alert, animated: true, completion: nil)
-        }
-    }
-    
-    
-    func zipcodeAlert() {
-        let alert = UIAlertController(title: "Invalid Zipcode", message: "Please enter a valid five digit zipcode", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Try Again", style: UIAlertActionStyle.default, handler: nil))
-        DispatchQueue.main.async {
-            self.present(alert, animated: true, completion: nil)
-        }
-    }
+}
 
+// Alerts
+extension SearchViewController {
+    
+    func alert(title: String, message: String, actionTitle: String) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: actionTitle, style: UIAlertActionStyle.default, handler: nil))
+            DispatchQueue.main.async {
+                self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
 }
 
