@@ -70,7 +70,6 @@ class PetViewController: UIViewController {
     
     func displayPetImage(pet: Pet) {
         if let images = pet.photos?.allObjects as? [Photos] {
-            //print("PetView images count: \(images.count)")
             
             if let image = images.first {
                 if let image = image.imageData {
@@ -91,7 +90,6 @@ class PetViewController: UIViewController {
         var breedMix = ""
         
         if let breeds = pet.breeds?.allObjects as? [Breeds] {
-            //print(breeds)
             for eachBreed in 0...breeds.count - 1 {
                 breedMix += (breeds[eachBreed].breed?.capitalized)!
                 if eachBreed < breeds.count - 1 {
@@ -114,7 +112,6 @@ class PetViewController: UIViewController {
         let petImagesVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PetImagesViewController") as! PetImagesViewController
         petImagesVC.coreDataStack = coreDataStack
         petImagesVC.pet = self.pet
-        //print("Segue for \(pet.name)")
         self.navigationController?.pushViewController(petImagesVC, animated: true)
     }
     
