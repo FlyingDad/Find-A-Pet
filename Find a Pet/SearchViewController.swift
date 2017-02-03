@@ -30,6 +30,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     var locationManager: CLLocationManager!
     var gpsZip: String!
     var usingGPS = false
+    var zipCodeLastSearched: String!
     
     let petFinderClient = PetFinderClient()
     let swiftyParse = SwiftyParse()
@@ -42,6 +43,8 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        zipCodeLastSearched = UserDefaults.standard.string(forKey: "zipCodeLastSearched")
+        zipCode.text = zipCodeLastSearched
         // This will dismiss the keyboard if tap outside of zipzode textfield
         let tap = UITapGestureRecognizer(target: self, action: #selector(SearchViewController.hideKeyboard))
         view.addGestureRecognizer(tap)
@@ -72,7 +75,11 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     @IBAction func searchUsingGps(_ sender: Any) {
         if gpsZip != nil || gpsZip != "" && usingGPS {
             usingGPS = true
-            searchForPets(usingZip: gpsZip)
+            if zipCodeLastSearched != gpsZip {
+                searchForPets(usingZip: gpsZip, newZip: false)
+            } else {
+                searchForPets(usingZip: "", newZip: true)
+            }
         } else {
             self.alert(title: "No Location Data", message: "Please verify location services are enabled and try again", actionTitle: "Dismiss")
         }
@@ -80,27 +87,33 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     
     
     @IBAction func searchByZip(_ sender: Any) {
-        print("In searchByZip function")
+        //print("In searchByZip function")
         
         zipCode.resignFirstResponder()
         
         let searchZip = zipCode.text
-        print("Manual zip: \(searchZip)")
+        //print("Manual zip: \(searchZip)")
         if searchZip?.characters.count != 5 {
-            alert(title: "Invaslid Zip Code", message: "Please enter a valid five digit zipcode", actionTitle: "Try Again")
+            alert(title: "Invalid Zip Code", message: "Please enter a valid five digit zipcode", actionTitle: "Try Again")
             return
         }
-        searchForPets(usingZip: searchZip!)
+        // only search if new zipcode
+        if zipCodeLastSearched != searchZip {
+            searchForPets(usingZip: searchZip!, newZip: false)
+        } else {
+            searchForPets(usingZip: "", newZip: true)
+        }
     }
     
     
-    func searchForPets(usingZip zip: String) {
-        //print("Search in zip: \(zip)")
+    func searchForPets(usingZip zip: String, newZip: Bool) {
         
         if isInternetAvailable() {
 
-            // need to delete all records here for new search
-            self.deleteAllPets()
+            // need to delete all records if search id for different zipcode
+            if newZip {
+                self.deleteAllPets()
+            }
             searchView.isHidden = true
             searchActivity.startAnimating()
                 self.petFinderClient.findPet(location: zip, animalType: self.animalType, completionHandlerForFindPet: { (petsFound, error) in
@@ -133,7 +146,6 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
             self.alert(title: "No Internet Connection", message: "Please connect to the Internet and try again.", actionTitle: "Dismiss")
         }
     }
-
 
     func deleteAllPets () {
         // We will keep favorites

@@ -25,8 +25,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 return true
         }
         viewController.coreDataStack = coreDataStack
+        checkIfFirstLaunch()
         
         return true
+    }
+    
+    func checkIfFirstLaunch() {
+        if !(UserDefaults.standard.bool(forKey: "hasLaunchedBefore")) {
+            UserDefaults.standard.set(true, forKey: "hasLaunchedBefore")
+            UserDefaults.standard.set("00000", forKey: "zipCodeLastSearched")
+            UserDefaults.standard.synchronize()
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
