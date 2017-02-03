@@ -32,6 +32,11 @@ This project is a Capstone project for the Udacity iOS Developer Nanodegree. It 
 
 You must add your own API Key in PetFinderConstants.swift @ line 44. 
 
+## Screenshots
+
+![](find.png)![](search.png)
+![](details.png)![](shelter.png)
+
 ## Contributing
 
 1. Fork it!
