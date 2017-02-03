@@ -31,6 +31,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     var gpsZip: String!
     var usingGPS = false
     var zipCodeLastSearched: String!
+    var animalTypeLastSearched: String!
     
     let petFinderClient = PetFinderClient()
     let swiftyParse = SwiftyParse()
@@ -42,10 +43,13 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        zipCodeLastSearched = UserDefaults.standard.string(forKey: "zipCodeLastSearched")
+        print("In view did load")
+        zipCodeLastSearched = UserDefaults.standard.value(forKey: "zipCodeLastSearched") as! String!
+        animalTypeLastSearched = UserDefaults.standard.value(forKey: "animalTypeLastSearched") as! String!
+        print("Last searched: \(zipCodeLastSearched) - \(animalTypeLastSearched)")
         zipCode.text = zipCodeLastSearched
-        // This will dismiss the keyboard if tap outside of zipzode textfield
+        
+        // This will dismiss the keyboard if tap outside of zip code textfield
         let tap = UITapGestureRecognizer(target: self, action: #selector(SearchViewController.hideKeyboard))
         view.addGestureRecognizer(tap)
         
@@ -87,41 +91,56 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     
     
     @IBAction func searchByZip(_ sender: Any) {
-        //print("In searchByZip function")
+        print("In searchByZip function")
         
         zipCode.resignFirstResponder()
         
         let searchZip = zipCode.text
-        //print("Manual zip: \(searchZip)")
+        print("Manual zip: \(searchZip)")
         if searchZip?.characters.count != 5 {
             alert(title: "Invalid Zip Code", message: "Please enter a valid five digit zipcode", actionTitle: "Try Again")
+            searchView.isHidden = false
             return
         }
-        // only search if new zipcode
+        print("Picker: \(animalType) - Last Searched: \(animalTypeLastSearched)")
+        
         if zipCodeLastSearched != searchZip {
-            searchForPets(usingZip: searchZip!, newZip: false)
+            zipCodeLastSearched = searchZip
+            searchForPets(usingZip: searchZip!, newZip: true)
         } else {
-            searchForPets(usingZip: "", newZip: true)
+            animalTypeLastSearched = animalType
+            searchForPets(usingZip: searchZip!, newZip: false)
         }
     }
     
     
     func searchForPets(usingZip zip: String, newZip: Bool) {
+        UserDefaults.standard.set(animalTypeLastSearched, forKey: "animalTypeLastSearched")
+        UserDefaults.standard.set(zipCodeLastSearched, forKey: "zipCodeLastSearched")
         
         if isInternetAvailable() {
-
-            // need to delete all records if search id for different zipcode
+            
+            // need to delete all records if search is for different zipcode
+            // also save new zip code in user defaults
             if newZip {
+                print("deleting all pets")
                 self.deleteAllPets()
+                
             }
             searchView.isHidden = true
             searchActivity.startAnimating()
+                print("calling findpet with: \(zip) - \(animalType)")
                 self.petFinderClient.findPet(location: zip, animalType: self.animalType, completionHandlerForFindPet: { (petsFound, error) in
                     guard (error == nil) else {
-                        print("Get Pet Error: \(error?.code)")
+                        print("Get Pet Error: \(error?.code) : \(error)")
+                        
                         if error?.code == 99 {
                             self.alert(title: "No Results", message: "Verify a valid zip code was entered", actionTitle: "Dismiss")
                         }
+                        DispatchQueue.main.async {
+                            self.searchView.isHidden = false
+                        }
+                        
                         return
                     }
                     guard let petsFound = petsFound else {
@@ -135,7 +154,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
                       
                         let vc = self.storyboard?.instantiateViewController(withIdentifier: "SearchResultsViewController") as! SearchResultsViewController
                         vc.coreDataStack = self.coreDataStack
-                        vc.zipCode = zip
+                        vc.animalType = self.animalType
                         self.navigationController?.pushViewController(vc, animated: true)
                         self.searchView.isHidden = false
                         self.searchActivity.stopAnimating()
@@ -148,7 +167,6 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     }
 
     func deleteAllPets () {
-        // We will keep favorites
 
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Pet")
 
