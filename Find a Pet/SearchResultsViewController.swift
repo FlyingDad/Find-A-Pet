@@ -19,6 +19,10 @@ class SearchResultsViewController: CoreDataTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let topItem = self.navigationController?.navigationBar.topItem {
+            topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        }
+        
         title = "Search Results"
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName: "Pet")
         if animalType == "smallfurry" {

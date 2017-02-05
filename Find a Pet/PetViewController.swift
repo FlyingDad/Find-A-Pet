@@ -29,6 +29,11 @@ class PetViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let topItem = self.navigationController?.navigationBar.topItem {
+            topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        }
+        title = "Details"
         displayPet(pet: pet)
         let petImageTap = UITapGestureRecognizer(target: self, action: #selector(PetViewController.petImageTapped))
         petImage.addGestureRecognizer(petImageTap)
