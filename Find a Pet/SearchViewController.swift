@@ -152,6 +152,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
                         let vc = self.storyboard?.instantiateViewController(withIdentifier: "SearchResultsViewController") as! SearchResultsViewController
                         vc.coreDataStack = self.coreDataStack
                         vc.animalType = self.animalType
+                        vc.zipCode = zip
                         self.navigationController?.pushViewController(vc, animated: true)
                         self.searchView.isHidden = false
                         self.searchActivity.stopAnimating()
@@ -230,21 +231,24 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return animalTypePickerData.count
     }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return animalTypePickerData[row]
-    }
+
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        animalType =  animalTypeRawData[row]
+        animalType = animalTypeRawData[row]
 
     }
     
-    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        let itemString = animalTypePickerData[row]
-        let item = NSAttributedString(string: itemString, attributes: [NSForegroundColorAttributeName: UIColor.darkText])
-        return item
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        var label = view as! UILabel!
+        if label == nil {
+            label = UILabel()
+        }
+        let data = animalTypePickerData[row]
+        let title = NSAttributedString(string: data, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 20.0, weight: UIFontWeightLight), NSForegroundColorAttributeName: UIColor(red: 239.0/255, green: 243.0/255, blue: 190.0/255, alpha: 1.0)])
+        label!.attributedText = title
+        label!.textAlignment = .center
+        return label!
     }
     
     
