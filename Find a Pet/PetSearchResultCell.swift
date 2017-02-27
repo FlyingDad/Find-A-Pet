@@ -12,7 +12,7 @@ class PetSearchResultCell: UITableViewCell {
 
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var age: UILabel!
-    @IBOutlet weak var sex: UILabel!
+    //@IBOutlet weak var sex: UILabel!
     @IBOutlet weak var petImage: UIImageView!
     @IBOutlet weak var imageActivityIndicator: UIActivityIndicatorView!
 

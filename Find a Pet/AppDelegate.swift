@@ -27,6 +27,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         viewController.coreDataStack = coreDataStack
         checkIfFirstLaunch()
         
+        let pageControl = UIPageControl.appearance()
+        pageControl.pageIndicatorTintColor = UIColor.lightGray
+        pageControl.currentPageIndicatorTintColor = UIColor.magenta
+        
+        
         return true
     }
     
@@ -34,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if !(UserDefaults.standard.bool(forKey: "hasLaunchedBefore")) {
             UserDefaults.standard.set(true, forKey: "hasLaunchedBefore")
             UserDefaults.standard.set("89121", forKey: "zipCodeLastSearched")
-            UserDefaults.standard.set("bird", forKey: "animalTypeLastSearched")
+            UserDefaults.standard.set(3, forKey: "animalTypeLastSearched")
             UserDefaults.standard.synchronize()
         }
     }
@@ -53,6 +58,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        
+        
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -65,5 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         coreDataStack.saveContext()
         UserDefaults.standard.synchronize()
     }
+    
+    
 
 }

@@ -16,6 +16,8 @@ class PetImagesViewController: UICollectionViewController, UICollectionViewDeleg
     var petPhotosArray = [Photos!]()
     var petfinderClient = PetFinderClient()
     var screenSize: CGRect!
+    var photoIndex: Int!
+    var photoName: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +62,7 @@ class PetImagesViewController: UICollectionViewController, UICollectionViewDeleg
                     self.coreDataStack.saveContext()
                     cell.petImage.image = image
                     cell.imageActivityIndicator.stopAnimating()
+                    
                 }
             })
         }
@@ -85,11 +88,18 @@ class PetImagesViewController: UICollectionViewController, UICollectionViewDeleg
         }
         
     }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let cell = sender as? UICollectionViewCell, let indexPath = collectionView?.indexPath(for: cell), let zoomedPhotoViewController = segue.destination as? ZoomPhotoViewController {
-            let petImage = petPhotosArray[indexPath.row]!
-            zoomedPhotoViewController.photo = UIImage(data:petImage.imageData! as Data)
+        if let cell = sender as? UICollectionViewCell, let indexPath = collectionView?.indexPath(for: cell), let petPhotoPageViewController = segue.destination as? PetPhotoPageViewController {
+            print(indexPath.row)
+            petPhotoPageViewController.currentIndex = indexPath.row
+            //petPhotoPageViewController.coreDataStack = coreDataStack
+            //petPhotoPageViewController.pet = pet
+            petPhotoPageViewController.petPhotos = petPhotosArray
+            //let petImage = petPhotosArray[indexPath.row]!
+            //zoomedPhotoViewController.photo = UIImage(data:petImage.imageData! as Data)
         }
     }
+    
     
 }

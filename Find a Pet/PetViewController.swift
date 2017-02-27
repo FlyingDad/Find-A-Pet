@@ -108,7 +108,7 @@ class PetViewController: UIViewController {
     func makeLocation() -> String {
         
         let city = pet.shelter?.city?.capitalized ?? ""
-        let state = pet.shelter?.state?.capitalized ?? ""
+        let state = pet.shelter?.state?.uppercased() ?? ""
         return city + ", " + state
         
     }
