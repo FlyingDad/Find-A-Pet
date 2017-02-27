@@ -31,28 +31,54 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     var gpsZip: String!
     var usingGPS = false
     var zipCodeLastSearched: String!
-    var animalTypeLastSearched: String!
+    
+    // Will be an Int corrosponding to the pickerviews last selection
+    var animalTypeLastSearched: Int!
     
     let petFinderClient = PetFinderClient()
     let swiftyParse = SwiftyParse()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("view will appear")
+        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        unsubscribeFromKeyboardNotifications()
+        NotificationCenter.default.removeObserver(
+            self,
+            name: NSNotification.Name.UIApplicationWillEnterForeground,
+            object: nil)
+    }
+    
+    func willEnterForeground() {
+        locationManager.startUpdatingLocation()
+        print("will enter foreground start updating location")
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         subscribeToKeyboardNotofocations()
+        print("view did appear")
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         zipCodeLastSearched = UserDefaults.standard.value(forKey: "zipCodeLastSearched") as! String!
-        animalTypeLastSearched = UserDefaults.standard.value(forKey: "animalTypeLastSearched") as! String!
+        animalTypeLastSearched = UserDefaults.standard.integer(forKey: "animalTypeLastSearched")
         zipCode.text = zipCodeLastSearched
+        //searchUsingLocation.isEnabled = false
         
         // This will dismiss the keyboard if tap outside of zip code textfield
         let tap = UITapGestureRecognizer(target: self, action: #selector(SearchViewController.hideKeyboard))
         view.addGestureRecognizer(tap)
         
         if CLLocationManager.locationServicesEnabled() {
-            searchUsingLocation.isEnabled = true
+            //searchUsingLocation.isEnabled = true
             locationManager = CLLocationManager()
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -64,24 +90,24 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         
         animalTypePickerData = ["Rabbit", "Small & Furry", "Dog", "Cat",  "Horse", "Bird", "Pig", "Barnyard"]
         animalTypeRawData = ["rabbit", "smallfurry", "dog", "cat",  "horse", "bird", "pig", "barnyard"]
-        animalViewPicker.selectRow(3, inComponent: 0, animated: true)
+        animalViewPicker.selectRow(animalTypeLastSearched, inComponent: 0, animated: true)
         zipCode.delegate = self
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        unsubscribeFromKeyboardNotifications()
-    }
-    
-    
     @IBAction func searchUsingGps(_ sender: Any) {
+        
+        guard isInternetAvailable() else {
+            self.alert(title: "No Internet Connection", message: "Please connect to the Internet and try again.", actionTitle: "Dismiss")
+            return
+        }
+        
         if gpsZip != nil || gpsZip != "" && usingGPS {
             usingGPS = true
             if zipCodeLastSearched != gpsZip {
                 zipCodeLastSearched = gpsZip
                 searchForPets(usingZip: gpsZip, newZip: true)
             } else {
-                animalTypeLastSearched = gpsZip
+                //animalTypeLastSearched = gpsZip
                 searchForPets(usingZip: gpsZip, newZip: false)
             }
         } else {
@@ -91,6 +117,11 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     
     
     @IBAction func searchByZip(_ sender: Any) {
+        
+        guard isInternetAvailable() else {
+            self.alert(title: "No Internet Connection", message: "Please connect to the Internet and try again.", actionTitle: "Dismiss")
+            return
+        }
         
         zipCode.resignFirstResponder()
         
@@ -105,7 +136,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
             zipCodeLastSearched = searchZip
             searchForPets(usingZip: searchZip!, newZip: true)
         } else {
-            animalTypeLastSearched = animalType
+            //animalTypeLastSearched = animalType
             searchForPets(usingZip: searchZip!, newZip: false)
         }
     }
@@ -115,7 +146,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         UserDefaults.standard.set(animalTypeLastSearched, forKey: "animalTypeLastSearched")
         UserDefaults.standard.set(zipCodeLastSearched, forKey: "zipCodeLastSearched")
         
-        if isInternetAvailable() {
+//        if isInternetAvailable() {
             
             // need to delete all records if search is for different zipcode
             // also save new zip code in user defaults
@@ -159,9 +190,9 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
                     }
                 })
 
-        } else {
-            self.alert(title: "No Internet Connection", message: "Please connect to the Internet and try again.", actionTitle: "Dismiss")
-        }
+//        } else {
+//            self.alert(title: "No Internet Connection", message: "Please connect to the Internet and try again.", actionTitle: "Dismiss")
+//        }
     }
 
     func deleteAllPets () {
@@ -236,6 +267,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         animalType = animalTypeRawData[row]
+        animalTypeLastSearched = row
 
     }
     
@@ -245,7 +277,8 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
             label = UILabel()
         }
         let data = animalTypePickerData[row]
-        let title = NSAttributedString(string: data, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 20.0, weight: UIFontWeightLight), NSForegroundColorAttributeName: UIColor(red: 239.0/255, green: 243.0/255, blue: 190.0/255, alpha: 1.0)])
+        let title = NSAttributedString(string: data, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 22.0, weight: UIFontWeightLight), NSForegroundColorAttributeName: UIColor(red: 255.0/255, green: 255.0/255, blue: 255.0/255, alpha: 1.0)])
+        label?.backgroundColor = UIColor(red: 64/255, green: 0/255, blue: 128/255, alpha: 0.5)
         label!.attributedText = title
         label!.textAlignment = .center
         return label!
@@ -283,6 +316,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error updating location: \(error)")
+        searchUsingLocation.isEnabled = false
     }
     
     // http://stackoverflow.com/questions/39558868/check-internet-connection-ios-10
