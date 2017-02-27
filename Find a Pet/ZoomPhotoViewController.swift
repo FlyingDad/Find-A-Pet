@@ -13,13 +13,26 @@ class ZoomPhotoViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageView: UIImageView!
     
-    var photo: UIImage!
+    // From page view controller
+    var photoName: String!
+    var photo: Photos!
+    var photoIndex: Int!
     
     override func viewDidLoad() {
         
+        super.viewDidLoad()
+        
+        //print("in view did load")
+        
         self.scrollView.maximumZoomScale = 1.0
         self.scrollView.maximumZoomScale = 6.0
-        imageView.image = photo
+        
+        if let image = UIImage(data: photo.imageData as! Data) {
+            imageView.image = image
+            //print("got the image")
+        } else {
+            //print("not getting image")
+        }
     }
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
