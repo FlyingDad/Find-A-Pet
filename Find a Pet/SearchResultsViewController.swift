@@ -25,7 +25,7 @@ class SearchResultsViewController: CoreDataTableViewController {
             topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         }
         
-        title = "Pets for Zip " + zipCode
+        title = "Pets near zip " + zipCode
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName: "Pet")
         if animalType == "smallfurry" {
             animalType = "small & furry"
@@ -96,20 +96,22 @@ class SearchResultsViewController: CoreDataTableViewController {
 
         
         cell.name.text = pet.name
-        cell.age.text = pet.age
+        let petAge = pet.age
+        var petSex: String!
         if let sex = pet.sex {
             switch sex {
             case "M", "m":
-                cell.sex.text = "Male"
+                petSex = " Male"
             case "F", "f":
-                cell.sex.text = "Female"
+                petSex = " Female"
             case "U", "u":
-                cell.sex.text = "Unknown"
+                petSex = " Unknown"
             default:
-                cell.sex.text = sex
+                petSex = sex
             }
             
         }
+        cell.age.text = petAge! + petSex
 
         return cell
     }
