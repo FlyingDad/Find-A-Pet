@@ -1,7 +1,5 @@
 # Find a Pet
 
-![Language](https://img.shields.io/badge/language-Swift%203-orange.svg)
-
 ## Notice
 The current version is working with Xcode Version 8.
 
