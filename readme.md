@@ -1,5 +1,7 @@
 # Find a Pet
 
+![Language](https://img.shields.io/badge/language-Swift%203-orange.svg)
+
 ## Notice
 The current version is working with Xcode Version 8.
 
@@ -32,6 +34,8 @@ You must add your own API Key in PetFinderConstants.swift @ line 44.
 
 ## Screenshots
 
+![](find.png)![](search.png)
+![](details.png)![](shelter.png)
 
 ## Contributing
 
