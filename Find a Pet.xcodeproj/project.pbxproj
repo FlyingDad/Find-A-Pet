@@ -46,12 +46,12 @@
 		4C10B2EE1E2BF6F800D39B2C /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		4C10B2F01E2BF71A00D39B2C /* SwiftyParse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyParse.swift; sourceTree = "<group>"; };
 		4C1995AA1E3BDFFB00C837B9 /* ShelterLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShelterLocationViewController.swift; sourceTree = "<group>"; };
-		4C30AD681E2D6F3C0079DF9C /* Breeds+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Breeds+CoreDataClass.swift"; path = "Find a Pet/Breeds+CoreDataClass.swift"; sourceTree = "<group>"; };
-		4C30AD691E2D6F3C0079DF9C /* Breeds+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Breeds+CoreDataProperties.swift"; path = "Find a Pet/Breeds+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		4C30AD6A1E2D6F3C0079DF9C /* Options+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Options+CoreDataClass.swift"; path = "Find a Pet/Options+CoreDataClass.swift"; sourceTree = "<group>"; };
-		4C30AD6B1E2D6F3C0079DF9C /* Options+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Options+CoreDataProperties.swift"; path = "Find a Pet/Options+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		4C30AD6E1E2D6F3C0079DF9C /* Photos+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Photos+CoreDataClass.swift"; path = "Find a Pet/Photos+CoreDataClass.swift"; sourceTree = "<group>"; };
-		4C30AD6F1E2D6F3C0079DF9C /* Photos+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Photos+CoreDataProperties.swift"; path = "Find a Pet/Photos+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4C30AD681E2D6F3C0079DF9C /* Breeds+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Breeds+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4C30AD691E2D6F3C0079DF9C /* Breeds+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Breeds+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4C30AD6A1E2D6F3C0079DF9C /* Options+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Options+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4C30AD6B1E2D6F3C0079DF9C /* Options+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Options+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4C30AD6E1E2D6F3C0079DF9C /* Photos+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Photos+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4C30AD6F1E2D6F3C0079DF9C /* Photos+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Photos+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4C380AB41E2584E700669CA3 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		4C4272D71E38F54E009BC573 /* PetImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		4C4272D91E3910FB009BC573 /* DescriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionViewController.swift; sourceTree = "<group>"; };
@@ -60,10 +60,10 @@
 		4C50AD971E380C8F00952305 /* PetImagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetImagesViewController.swift; sourceTree = "<group>"; };
 		4C61129D1E355992002B10E0 /* SearchByZipButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchByZipButton.swift; sourceTree = "<group>"; };
 		4C7567E71E47920200567E5D /* MaterialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialView.swift; sourceTree = "<group>"; };
-		4C7792A01E3BB1BC00684D5F /* Shelter+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Shelter+CoreDataClass.swift"; path = "Find a Pet/Shelter+CoreDataClass.swift"; sourceTree = "<group>"; };
-		4C7792A11E3BB1BC00684D5F /* Shelter+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Shelter+CoreDataProperties.swift"; path = "Find a Pet/Shelter+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		4C7792A21E3BB1BC00684D5F /* Pet+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Pet+CoreDataClass.swift"; path = "Find a Pet/Pet+CoreDataClass.swift"; sourceTree = "<group>"; };
-		4C7792A31E3BB1BC00684D5F /* Pet+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Pet+CoreDataProperties.swift"; path = "Find a Pet/Pet+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4C7792A01E3BB1BC00684D5F /* Shelter+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Shelter+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4C7792A11E3BB1BC00684D5F /* Shelter+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Shelter+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4C7792A21E3BB1BC00684D5F /* Pet+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Pet+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4C7792A31E3BB1BC00684D5F /* Pet+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Pet+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4C80DB771E2E85520053AA34 /* PetSearchResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetSearchResultCell.swift; sourceTree = "<group>"; };
 		4C80DB791E2E8FA20053AA34 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		4C80DB7B1E2E98390053AA34 /* CoreDataTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTableViewController.swift; sourceTree = "<group>"; };
@@ -103,16 +103,6 @@
 		4CA3ED421E200E8B00AFEAAA = {
 			isa = PBXGroup;
 			children = (
-				4C7792A01E3BB1BC00684D5F /* Shelter+CoreDataClass.swift */,
-				4C7792A11E3BB1BC00684D5F /* Shelter+CoreDataProperties.swift */,
-				4C7792A21E3BB1BC00684D5F /* Pet+CoreDataClass.swift */,
-				4C7792A31E3BB1BC00684D5F /* Pet+CoreDataProperties.swift */,
-				4C30AD681E2D6F3C0079DF9C /* Breeds+CoreDataClass.swift */,
-				4C30AD691E2D6F3C0079DF9C /* Breeds+CoreDataProperties.swift */,
-				4C30AD6A1E2D6F3C0079DF9C /* Options+CoreDataClass.swift */,
-				4C30AD6B1E2D6F3C0079DF9C /* Options+CoreDataProperties.swift */,
-				4C30AD6E1E2D6F3C0079DF9C /* Photos+CoreDataClass.swift */,
-				4C30AD6F1E2D6F3C0079DF9C /* Photos+CoreDataProperties.swift */,
 				4CA3ED4D1E200E8B00AFEAAA /* Find a Pet */,
 				4CA3ED4C1E200E8B00AFEAAA /* Products */,
 			);
@@ -130,13 +120,13 @@
 			isa = PBXGroup;
 			children = (
 				4CA3ED4E1E200E8B00AFEAAA /* AppDelegate.swift */,
+				4C4272DB1E39161A009BC573 /* Main.storyboard */,
 				4CED1D561E216F0C00F48238 /* Model */,
 				4CED1D5A1E216F7200F48238 /* View */,
 				4CED1D591E216F5400F48238 /* Controller */,
 				4CA3ED651E20273900AFEAAA /* Client */,
 				4C30AD551E2D33DF0079DF9C /* Utilities */,
 				4CA3ED581E200E8B00AFEAAA /* Assets.xcassets */,
-				4C4272DB1E39161A009BC573 /* Main.storyboard */,
 				4CA3ED5A1E200E8B00AFEAAA /* LaunchScreen.storyboard */,
 				4CA3ED5D1E200E8B00AFEAAA /* Info.plist */,
 				4CA3ED551E200E8B00AFEAAA /* Find_a_Pet.xcdatamodeld */,
@@ -157,6 +147,16 @@
 			isa = PBXGroup;
 			children = (
 				4CED1D5B1E241FCB00F48238 /* CoreDataStack.swift */,
+				4C7792A01E3BB1BC00684D5F /* Shelter+CoreDataClass.swift */,
+				4C7792A11E3BB1BC00684D5F /* Shelter+CoreDataProperties.swift */,
+				4C7792A21E3BB1BC00684D5F /* Pet+CoreDataClass.swift */,
+				4C7792A31E3BB1BC00684D5F /* Pet+CoreDataProperties.swift */,
+				4C30AD681E2D6F3C0079DF9C /* Breeds+CoreDataClass.swift */,
+				4C30AD691E2D6F3C0079DF9C /* Breeds+CoreDataProperties.swift */,
+				4C30AD6A1E2D6F3C0079DF9C /* Options+CoreDataClass.swift */,
+				4C30AD6B1E2D6F3C0079DF9C /* Options+CoreDataProperties.swift */,
+				4C30AD6E1E2D6F3C0079DF9C /* Photos+CoreDataClass.swift */,
+				4C30AD6F1E2D6F3C0079DF9C /* Photos+CoreDataProperties.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";

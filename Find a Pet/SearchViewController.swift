@@ -20,6 +20,8 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
 
     @IBOutlet weak var activityView: UIView!
     @IBOutlet weak var searchView: UIView!
+    @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var searchContainerView: UIView!
     
     var animalTypePickerData = [String]()
     var animalTypeRawData = [String]()
@@ -68,6 +70,13 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
+        //let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        //blurEffectView.frame = searchContainerView.bounds
+        //backgroundImageView.addSubview(blurEffectView)
+        //searchContainerView.addSubview(blurEffectView)
+        
         zipCodeLastSearched = UserDefaults.standard.value(forKey: "zipCodeLastSearched") as! String!
         animalTypeLastSearched = UserDefaults.standard.integer(forKey: "animalTypeLastSearched")
         zipCode.text = zipCodeLastSearched
@@ -160,7 +169,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
 
                 self.petFinderClient.findPet(location: zip, animalType: self.animalType, completionHandlerForFindPet: { (petsFound, error) in
                     guard (error == nil) else {
-                        print("Get Pet Error: \(error?.code) : \(error)")
+                        print("Get Pet Error: \(error!.code) : \(error!)")
                         
                         if error?.code == 99 {
                             self.alert(title: "No Results", message: "Verify a valid zip code was entered", actionTitle: "Dismiss")
@@ -278,8 +287,10 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         }
         let data = animalTypePickerData[row]
         let title = NSAttributedString(string: data, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 22.0, weight: UIFontWeightLight), NSForegroundColorAttributeName: UIColor(red: 255.0/255, green: 255.0/255, blue: 255.0/255, alpha: 1.0)])
-        label?.backgroundColor = UIColor(red: 64/255, green: 0/255, blue: 128/255, alpha: 0.5)
+        //label?.backgroundColor = UIColor(red: 64/255, green: 0/255, blue: 128/255, alpha: 0.5)
         label!.attributedText = title
+        
+        //label?.text = title
         label!.textAlignment = .center
         return label!
     }
@@ -298,7 +309,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         
         CLGeocoder().reverseGeocodeLocation(currentLocation) { (placemarks, error) in
             if error != nil {
-                print("Reverse geocoder failed with error: \(error)")
+                print("Reverse geocoder failed with error: \(error!)")
                 self.searchUsingLocation.isEnabled = false
                 return
             }

@@ -46,6 +46,8 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>&quot;This app may use your location for search results&quot;</string>
 </dict>
