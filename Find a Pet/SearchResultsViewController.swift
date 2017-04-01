@@ -17,9 +17,14 @@ class SearchResultsViewController: CoreDataTableViewController {
     let petFinderClient = PetFinderClient()
     let swiftyParse = SwiftyParse()
     
+    @IBOutlet var tableview: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableview.backgroundView = UIImageView(image: UIImage(named: "grassbg.png"))
+        //tableview.estimatedRowHeight = 150
+        //tableview.rowHeight = UITableViewAutomaticDimension
         
         if let topItem = self.navigationController?.navigationBar.topItem {
             topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
