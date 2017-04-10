@@ -32,8 +32,7 @@ You must add your own API Key in PetFinderConstants.swift @ line 44.
 
 ## Screenshots
 
-![](search.png)![](searchresults.png)
-![](shelterinfo.png)
+![](search.png) ![](searchresults.png) ![](shelterinfo.png)
 
 ## Contributing
 
