@@ -22,8 +22,6 @@ class ZoomPhotoViewController: UIViewController, UIScrollViewDelegate {
         
         super.viewDidLoad()
         
-        //print("in view did load")
-        
         self.scrollView.maximumZoomScale = 1.0
         self.scrollView.maximumZoomScale = 6.0
         

@@ -18,10 +18,10 @@ class PetPhotoPageViewController: UIPageViewController {
 
         dataSource = self
         
-        // 1
+
         if let viewController = viewPetImagesController(currentIndex ?? 0) {
             let viewControllers = [viewController]
-            // 2
+
             setViewControllers(viewControllers,
                                direction: .forward,
                                animated: false,
@@ -37,7 +37,6 @@ class PetPhotoPageViewController: UIPageViewController {
             as? ZoomPhotoViewController {
             page.photoName = "Photo " + String(currentIndex + 1)
             page.photo = petPhotos[index]
-            //print(page.photoName)
             page.photoIndex = index
 
             return page
@@ -57,13 +56,11 @@ extension PetPhotoPageViewController: UIPageViewControllerDataSource {
             
             guard index != NSNotFound && index != 0 else { return nil }
             index = index! - 1
-            //print("Before index:  \(index)")
             return viewPetImagesController(index!)
         }
         return nil
     }
     
-    // 2
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerAfter viewController: UIViewController) -> UIViewController? {
         
@@ -72,7 +69,6 @@ extension PetPhotoPageViewController: UIPageViewControllerDataSource {
             guard index != NSNotFound else { return nil }
             index = index! + 1
             guard index != petPhotos.count else {return nil}
-            //print("After index:  \(index)")
             return viewPetImagesController(index!)
         }
         return nil
@@ -80,12 +76,10 @@ extension PetPhotoPageViewController: UIPageViewControllerDataSource {
     
     // MARK: UIPageControl
     func presentationCount(for pageViewController: UIPageViewController) -> Int {
-        // 1
         return petPhotos.count
     }
     
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {
-        // 2
         return currentIndex ?? 0
     }
     

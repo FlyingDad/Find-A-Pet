@@ -42,7 +42,6 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("view will appear")
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
 
     }
@@ -58,29 +57,19 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     
     func willEnterForeground() {
         locationManager.startUpdatingLocation()
-        print("will enter foreground start updating location")
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         subscribeToKeyboardNotofocations()
-        print("view did appear")
-        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
-        //let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        //blurEffectView.frame = searchContainerView.bounds
-        //backgroundImageView.addSubview(blurEffectView)
-        //searchContainerView.addSubview(blurEffectView)
-        
         zipCodeLastSearched = UserDefaults.standard.value(forKey: "zipCodeLastSearched") as! String!
         animalTypeLastSearched = UserDefaults.standard.integer(forKey: "animalTypeLastSearched")
         zipCode.text = zipCodeLastSearched
-        //searchUsingLocation.isEnabled = false
         
         // This will dismiss the keyboard if tap outside of zip code textfield
         let tap = UITapGestureRecognizer(target: self, action: #selector(SearchViewController.hideKeyboard))
@@ -116,7 +105,6 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
                 zipCodeLastSearched = gpsZip
                 searchForPets(usingZip: gpsZip, newZip: true)
             } else {
-                //animalTypeLastSearched = gpsZip
                 searchForPets(usingZip: gpsZip, newZip: false)
             }
         } else {
@@ -145,7 +133,6 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
             zipCodeLastSearched = searchZip
             searchForPets(usingZip: searchZip!, newZip: true)
         } else {
-            //animalTypeLastSearched = animalType
             searchForPets(usingZip: searchZip!, newZip: false)
         }
     }
@@ -199,10 +186,8 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
                     }
                 })
 
-//        } else {
-//            self.alert(title: "No Internet Connection", message: "Please connect to the Internet and try again.", actionTitle: "Dismiss")
-//        }
     }
+    
 
     func deleteAllPets () {
 
@@ -287,10 +272,8 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         }
         let data = animalTypePickerData[row]
         let title = NSAttributedString(string: data, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 22.0, weight: UIFontWeightMedium), NSForegroundColorAttributeName: UIColor(red: 255.0/255, green: 255.0/255, blue: 255.0/255, alpha: 1.0)])
-        //label?.backgroundColor = UIColor(red: 64/255, green: 0/255, blue: 128/255, alpha: 0.5)
         label!.attributedText = title
         
-        //label?.text = title
         label!.textAlignment = .center
         return label!
     }

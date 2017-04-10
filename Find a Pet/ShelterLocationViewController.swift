@@ -32,7 +32,6 @@ class ShelterLocationViewController: UIViewController {
         zip.text = shelter.zip
         emailBtn.setTitle(shelter.email, for: .normal)
         
-        //print("Phone: \(shelter.phone)")
         if (shelter.phone?.characters.count)! > 0 {
             callBtn.setTitle(shelter.phone, for: .normal)
         } else {
