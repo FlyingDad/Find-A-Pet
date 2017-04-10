@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let pageControl = UIPageControl.appearance()
         pageControl.pageIndicatorTintColor = UIColor.lightGray
-        pageControl.currentPageIndicatorTintColor = UIColor.magenta
+        pageControl.currentPageIndicatorTintColor = UIColor.green
         
         UINavigationBar.appearance().barTintColor = UIColor(red: 64.0/255.0, green: 0.0/255.0, blue: 128.0/255.0, alpha: 1.0)
         UINavigationBar.appearance().tintColor = UIColor.white
