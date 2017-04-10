@@ -354,6 +354,7 @@
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OLO-cE-vsJ">
                                             <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                            <color key="backgroundColor" red="0.022144407160000001" green="0.25494446780000002" blue="0.02941859443" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </imageView>
                                         <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="nXr-by-5Xj">
                                             <rect key="frame" x="65" y="65" width="20" height="20"/>
@@ -362,12 +363,12 @@
                                 </view>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.66161281780000003" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="OLO-cE-vsJ" firstAttribute="centerY" secondItem="ug9-FZ-pBy" secondAttribute="centerY" id="H3j-SA-B4x"/>
-                                    <constraint firstItem="OLO-cE-vsJ" firstAttribute="top" secondItem="ug9-FZ-pBy" secondAttribute="top" id="PJg-Ay-ZdE"/>
-                                    <constraint firstItem="OLO-cE-vsJ" firstAttribute="leading" secondItem="ug9-FZ-pBy" secondAttribute="leading" id="TKl-kA-ld2"/>
-                                    <constraint firstItem="OLO-cE-vsJ" firstAttribute="centerX" secondItem="ug9-FZ-pBy" secondAttribute="centerX" id="eYT-85-UEs"/>
-                                    <constraint firstItem="nXr-by-5Xj" firstAttribute="centerY" secondItem="ug9-FZ-pBy" secondAttribute="centerY" id="nmO-mO-iBE"/>
-                                    <constraint firstItem="nXr-by-5Xj" firstAttribute="centerX" secondItem="ug9-FZ-pBy" secondAttribute="centerX" id="osR-YP-VdY"/>
+                                    <constraint firstItem="OLO-cE-vsJ" firstAttribute="leading" secondItem="ug9-FZ-pBy" secondAttribute="leading" id="4Tw-z6-a6M"/>
+                                    <constraint firstAttribute="trailing" secondItem="OLO-cE-vsJ" secondAttribute="trailing" id="RNd-BO-Dmk"/>
+                                    <constraint firstItem="OLO-cE-vsJ" firstAttribute="top" secondItem="ug9-FZ-pBy" secondAttribute="top" id="b0C-Wk-PTD"/>
+                                    <constraint firstItem="OLO-cE-vsJ" firstAttribute="centerY" secondItem="nXr-by-5Xj" secondAttribute="centerY" id="wS2-Y4-206"/>
+                                    <constraint firstItem="OLO-cE-vsJ" firstAttribute="centerX" secondItem="nXr-by-5Xj" secondAttribute="centerX" id="zfv-NR-LzF"/>
+                                    <constraint firstAttribute="bottom" secondItem="OLO-cE-vsJ" secondAttribute="bottom" id="zju-D6-YVJ"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="imageActivityIndicator" destination="nXr-by-5Xj" id="iGh-5B-Ngs"/>
