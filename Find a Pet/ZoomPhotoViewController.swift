@@ -27,7 +27,7 @@ class ZoomPhotoViewController: UIViewController, UIScrollViewDelegate {
         self.scrollView.maximumZoomScale = 1.0
         self.scrollView.maximumZoomScale = 6.0
         
-        if let image = UIImage(data: photo.imageData as! Data) {
+        if let image = UIImage(data: photo.imageData! as Data) {
             imageView.image = image
             //print("got the image")
         } else {

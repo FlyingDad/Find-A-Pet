@@ -57,7 +57,7 @@ extension PetPhotoPageViewController: UIPageViewControllerDataSource {
             
             guard index != NSNotFound && index != 0 else { return nil }
             index = index! - 1
-            print("Before index:  \(index)")
+            //print("Before index:  \(index)")
             return viewPetImagesController(index!)
         }
         return nil
@@ -72,7 +72,7 @@ extension PetPhotoPageViewController: UIPageViewControllerDataSource {
             guard index != NSNotFound else { return nil }
             index = index! + 1
             guard index != petPhotos.count else {return nil}
-            print("After index:  \(index)")
+            //print("After index:  \(index)")
             return viewPetImagesController(index!)
         }
         return nil

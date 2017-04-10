@@ -110,7 +110,7 @@ class SwiftyParse {
             if let shelterId = pet.shelterId {
                 self.petFinderCLient.getShelterInfo(shelterId: shelterId, completionHandlerForGetShelterInfo: {(shelterInfo, error) in
                     guard (error == nil) else {
-                        print("Get Shelter Error: \(error?.localizedDescription)")
+                        print("Get Shelter Error: \(error!.localizedDescription)")
                         return
                     }
                     guard let shelterInfo = shelterInfo else {

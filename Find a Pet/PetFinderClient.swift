@@ -28,20 +28,20 @@ final class PetFinderClient {
         getDataTask(urlString: urlString + escapedParameters(parameters: methodParameters)) { (data, error) in
             
             guard (error == nil) else {
-                completionHandlerForFindPet(nil, NSError(domain: "findPet Data Task: \(error)", code: 0, userInfo: nil))
+                completionHandlerForFindPet(nil, NSError(domain: "findPet Data Task: \(error!)", code: 0, userInfo: nil))
                 return
             }
             
             self.getRequestStatusCode(data: data!) { (petFinderdata, error) in
                 
                 guard (error == nil) else {
-                    completionHandlerForFindPet(nil, NSError(domain: "findPet status code: \(error)", code: 99, userInfo: nil))
+                    completionHandlerForFindPet(nil, NSError(domain: "findPet status code: \(error!)", code: 99, userInfo: nil))
                     return
                 }
                 
                 // Get pet record in response
                 guard let petsFound = petFinderdata?[PetFinderConstants.ResponseKeys.PetsFound] as? [String: AnyObject] else {
-                    completionHandlerForFindPet(nil, NSError(domain: "findPet pet record: \(error)", code: 0, userInfo: nil))
+                    completionHandlerForFindPet(nil, NSError(domain: "findPet pet record: \(error!)", code: 0, userInfo: nil))
                     return
                 }
                 
