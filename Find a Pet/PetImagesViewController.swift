@@ -75,7 +75,17 @@ class PetImagesViewController: UICollectionViewController, UICollectionViewDeleg
         return UIEdgeInsetsMake(10, 10, 10, 10)
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        //print(collectionView.frame.width)
+        // set two images per row in collection view portrait mode
+        // 10 inset * 2 and 10 spacing = 30
+        let imageWidth = (collectionView.frame.width - 30)/2
+        //let sideSize = (traitCollection.horizontalSizeClass == .compact && traitCollection.verticalSizeClass == .regular) ? 190.0 : 128.0
+        return CGSize(width: imageWidth, height: imageWidth)
+    }
     
+
     func getPetImagesArray () {
         if let photosArray = pet.photos?.allObjects as? [Photos] {
             if photosArray.count == 0 {

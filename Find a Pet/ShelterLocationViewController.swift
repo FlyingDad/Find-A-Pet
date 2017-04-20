@@ -30,12 +30,22 @@ class ShelterLocationViewController: UIViewController {
         address2.text = shelter.address2
         location.text = makeLocation()
         zip.text = shelter.zip
-        emailBtn.setTitle(shelter.email, for: .normal)
+        
+        if (shelter.email?.characters.count)! > 0 {
+            emailBtn.setTitle("Email Shelter", for: .normal)
+            emailBtn.isEnabled = true
+        } else {
+            emailBtn.setTitle("Email not provided", for: .disabled)
+            emailBtn.isEnabled = false
+        }
+        emailBtn.setTitle("Email Shelter", for: .normal)
         
         if (shelter.phone?.characters.count)! > 0 {
             callBtn.setTitle(shelter.phone, for: .normal)
+            callBtn.isEnabled = true
         } else {
             callBtn.setTitle("Phone # not provided", for: .normal)
+            callBtn.isEnabled = false
         }
         
 

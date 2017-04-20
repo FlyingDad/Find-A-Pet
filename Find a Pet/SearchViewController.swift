@@ -79,7 +79,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
             //searchUsingLocation.isEnabled = true
             locationManager = CLLocationManager()
             locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
             locationManager.requestWhenInUseAuthorization()
             locationManager.startUpdatingLocation()
         } else {
@@ -147,7 +147,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
             // need to delete all records if search is for different zipcode
             // also save new zip code in user defaults
             if newZip {
-                print("deleting all pets")
+                //print("deleting all pets")
                 self.deleteAllPets()
                 
             }
