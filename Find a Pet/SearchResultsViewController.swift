@@ -14,6 +14,7 @@ class SearchResultsViewController: CoreDataTableViewController {
     var coreDataStack: CoreDataStack!
     var animalType: String!
     var zipCode: String!
+    var petType: String!
     let petFinderClient = PetFinderClient()
     let swiftyParse = SwiftyParse()
     
@@ -28,7 +29,7 @@ class SearchResultsViewController: CoreDataTableViewController {
             topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         }
         
-        title = "Pets near zip " + zipCode
+        title = animalType.capitalized + "'s near zip " + zipCode
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName: "Pet")
         if animalType == "smallfurry" {
             animalType = "small & furry"
