@@ -27,7 +27,6 @@ class ZoomPhotoViewController: UIViewController, UIScrollViewDelegate {
         
         if let image = UIImage(data: photo.imageData! as Data) {
             imageView.image = image
-            //print("got the image")
         } else {
             //print("not getting image")
         }

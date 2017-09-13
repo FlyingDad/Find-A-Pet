@@ -18,6 +18,11 @@ class PetPhotoPageViewController: UIPageViewController {
 
         dataSource = self
         
+        if let topItem = self.navigationController?.navigationBar.topItem {
+            topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        }
+
+        
 
         if let viewController = viewPetImagesController(currentIndex ?? 0) {
             let viewControllers = [viewController]
