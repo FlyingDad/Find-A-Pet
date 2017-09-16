@@ -86,8 +86,8 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
             searchUsingLocation.isEnabled = false
         }
         
-        animalTypePickerData = ["Rabbit", "Small & Furry", "Dog", "Cat",  "Horse", "Bird", "Pig", "Barnyard"]
-        animalTypeRawData = ["rabbit", "smallfurry", "dog", "cat",  "horse", "bird", "pig", "barnyard"]
+        animalTypePickerData = ["Rabbit", "Small & Furry", "Dog", "Cat",  "Horse", "Bird", "Barnyard"]
+        animalTypeRawData = ["rabbit", "smallfurry", "dog", "cat",  "horse", "bird", "barnyard"]
         animalViewPicker.selectRow(animalTypeLastSearched, inComponent: 0, animated: true)
         zipCode.delegate = self
     }
