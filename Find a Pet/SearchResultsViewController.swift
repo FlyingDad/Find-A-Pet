@@ -23,7 +23,7 @@ class SearchResultsViewController: CoreDataTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableview.backgroundView = UIImageView(image: UIImage(named: "grassbg.png"))
+        //tableview.backgroundView = UIImageView(image: UIImage(named: "grassbg.png"))
         
         if let topItem = self.navigationController?.navigationBar.topItem {
             topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)

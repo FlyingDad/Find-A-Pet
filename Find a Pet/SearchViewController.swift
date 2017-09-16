@@ -271,7 +271,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
             label = UILabel()
         }
         let data = animalTypePickerData[row]
-        let title = NSAttributedString(string: data, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 22.0, weight: UIFontWeightMedium), NSForegroundColorAttributeName: UIColor(red: 255.0/255, green: 255.0/255, blue: 255.0/255, alpha: 1.0)])
+        let title = NSAttributedString(string: data, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 20.0, weight: UIFontWeightLight), NSForegroundColorAttributeName: UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1.0)])
         label!.attributedText = title
         
         label!.textAlignment = .center

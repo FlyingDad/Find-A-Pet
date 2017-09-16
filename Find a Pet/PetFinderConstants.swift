@@ -43,7 +43,7 @@ struct PetFinderConstants {
     struct ParameterValues {
         static let ApiKey = "e6bc70bd191a1152df8fc462a3ecc179"
         static let FormatJSON = "json"
-        static let MaxCount = "50" // Adjust this later
+        static let MaxCount = "5" // Adjust this later
     }
     
     struct ResponseKeys {

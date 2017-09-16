@@ -23,7 +23,6 @@
 		4C4272DE1E3A5574009BC573 /* ZoomPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4272DD1E3A5574009BC573 /* ZoomPhotoViewController.swift */; };
 		4C50AD981E380C8F00952305 /* PetImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C50AD971E380C8F00952305 /* PetImagesViewController.swift */; };
 		4C61129E1E355992002B10E0 /* SearchByZipButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C61129D1E355992002B10E0 /* SearchByZipButton.swift */; };
-		4C7567E81E47920200567E5D /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7567E71E47920200567E5D /* MaterialView.swift */; };
 		4C7792A41E3BB1BC00684D5F /* Shelter+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7792A01E3BB1BC00684D5F /* Shelter+CoreDataClass.swift */; };
 		4C7792A51E3BB1BC00684D5F /* Shelter+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7792A11E3BB1BC00684D5F /* Shelter+CoreDataProperties.swift */; };
 		4C7792A61E3BB1BC00684D5F /* Pet+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7792A21E3BB1BC00684D5F /* Pet+CoreDataClass.swift */; };
@@ -59,7 +58,6 @@
 		4C4272DD1E3A5574009BC573 /* ZoomPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomPhotoViewController.swift; sourceTree = "<group>"; };
 		4C50AD971E380C8F00952305 /* PetImagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetImagesViewController.swift; sourceTree = "<group>"; };
 		4C61129D1E355992002B10E0 /* SearchByZipButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchByZipButton.swift; sourceTree = "<group>"; };
-		4C7567E71E47920200567E5D /* MaterialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialView.swift; sourceTree = "<group>"; };
 		4C7792A01E3BB1BC00684D5F /* Shelter+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Shelter+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4C7792A11E3BB1BC00684D5F /* Shelter+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Shelter+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4C7792A21E3BB1BC00684D5F /* Pet+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Pet+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -180,7 +178,6 @@
 		4CED1D5A1E216F7200F48238 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4C7567E71E47920200567E5D /* MaterialView.swift */,
 				4C80DB771E2E85520053AA34 /* PetSearchResultCell.swift */,
 				4C61129D1E355992002B10E0 /* SearchByZipButton.swift */,
 				4C4272D71E38F54E009BC573 /* PetImageCollectionViewCell.swift */,
@@ -261,7 +258,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C7567E81E47920200567E5D /* MaterialView.swift in Sources */,
 				4C50AD981E380C8F00952305 /* PetImagesViewController.swift in Sources */,
 				4CED1D5C1E241FCB00F48238 /* CoreDataStack.swift in Sources */,
 				4CA3ED511E200E8B00AFEAAA /* PetViewController.swift in Sources */,
