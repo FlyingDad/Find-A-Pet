@@ -13,6 +13,7 @@ class SearchResultsViewController: CoreDataTableViewController {
     
     var coreDataStack: CoreDataStack!
     var animalType: String!
+    var titleAnimal: String!
     var zipCode: String!
     var petType: String!
     let petFinderClient = PetFinderClient()
@@ -29,7 +30,7 @@ class SearchResultsViewController: CoreDataTableViewController {
             topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         }
         
-        title = animalType.capitalized + "'s near zip " + zipCode
+        title = titleAnimal.capitalized + "'s near zip " + zipCode
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName: "Pet")
         if animalType == "smallfurry" {
             animalType = "small & furry"
@@ -60,7 +61,7 @@ class SearchResultsViewController: CoreDataTableViewController {
             
             if photos.count == 0 {
                 DispatchQueue.main.async {
-                    cell.petImage.image = UIImage(named: "nophoto")
+                    cell.petImage.image = UIImage(named: "NoImage")
                     cell.imageActivityIndicator.stopAnimating()
                 }
             }

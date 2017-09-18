@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         pageControl.currentPageIndicatorTintColor = UIColor.green
         
         //UINavigationBar.appearance().barTintColor = UIColor(red: 64.0/255.0, green: 0.0/255.0, blue: 128.0/255.0, alpha: 1.0)
-        //UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().tintColor = UIColor.white
         
         if let barFont = UIFont(name: "Avenir-Light", size: 22.0) {
             UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white, NSFontAttributeName:barFont]

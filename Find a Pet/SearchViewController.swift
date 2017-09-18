@@ -179,6 +179,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
                         let vc = self.storyboard?.instantiateViewController(withIdentifier: "SearchResultsViewController") as! SearchResultsViewController
                         vc.coreDataStack = self.coreDataStack
                         vc.animalType = self.animalType
+                        vc.titleAnimal = self.animalTypePickerData[self.animalTypeLastSearched]
                         vc.zipCode = zip
                         self.navigationController?.pushViewController(vc, animated: true)
                         self.searchView.isHidden = false
