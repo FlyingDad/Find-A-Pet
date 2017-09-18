@@ -24,7 +24,6 @@ class ShelterLocationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         name.text = shelter.name?.capitalized
         address1.text = shelter.address1
         address2.text = shelter.address2

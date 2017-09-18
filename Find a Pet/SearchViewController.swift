@@ -68,6 +68,12 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         super.viewDidLoad()
         
         zipCodeLastSearched = UserDefaults.standard.value(forKey: "zipCodeLastSearched") as! String!
+        if (UserDefaults.standard.object(forKey: "animalTypeLastSearched") != nil) {
+            animalTypeLastSearched = UserDefaults.standard.integer(forKey: "animalTypeLastSearched")
+            //print("saved last searched \(animalTypeLastSearched)")
+        } else {
+            animalTypeLastSearched = 3
+        }
         animalTypeLastSearched = UserDefaults.standard.integer(forKey: "animalTypeLastSearched")
         zipCode.text = zipCodeLastSearched
         
@@ -141,20 +147,19 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     func searchForPets(usingZip zip: String, newZip: Bool) {
         UserDefaults.standard.set(animalTypeLastSearched, forKey: "animalTypeLastSearched")
         UserDefaults.standard.set(zipCodeLastSearched, forKey: "zipCodeLastSearched")
-        
-//        if isInternetAvailable() {
+        //print("searching for \(self.animalTypeRawData[self.animalTypeLastSearched])")//
             
             // need to delete all records if search is for different zipcode
             // also save new zip code in user defaults
             if newZip {
-                //print("deleting all pets")
+
                 self.deleteAllPets()
                 
             }
             searchView.isHidden = true
             searchActivity.startAnimating()
 
-                self.petFinderClient.findPet(location: zip, animalType: self.animalType, completionHandlerForFindPet: { (petsFound, error) in
+                self.petFinderClient.findPet(location: zip, animalType: self.animalTypeRawData[self.animalTypeLastSearched], completionHandlerForFindPet: { (petsFound, error) in
                     guard (error == nil) else {
                         print("Get Pet Error: \(error!.code) : \(error!)")
                         
@@ -178,7 +183,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
                       
                         let vc = self.storyboard?.instantiateViewController(withIdentifier: "SearchResultsViewController") as! SearchResultsViewController
                         vc.coreDataStack = self.coreDataStack
-                        vc.animalType = self.animalType
+                        vc.animalType = self.animalTypeRawData[self.animalTypeLastSearched]
                         vc.titleAnimal = self.animalTypePickerData[self.animalTypeLastSearched]
                         vc.zipCode = zip
                         self.navigationController?.pushViewController(vc, animated: true)
@@ -310,7 +315,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Error updating location: \(error)")
+        //print("Error updating location: \(error)")
         searchUsingLocation.isEnabled = false
     }
     

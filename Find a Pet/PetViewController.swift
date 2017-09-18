@@ -107,9 +107,14 @@ class PetViewController: UIViewController {
     
     func makeLocation() -> String {
         
-        let city = pet.shelter?.city?.capitalized ?? ""
-        let state = pet.shelter?.state?.uppercased() ?? ""
-        return city + ", " + state
+        if pet.shelter?.entity != nil {
+            let city = pet.shelter?.city?.capitalized ?? ""
+            let state = pet.shelter?.state?.uppercased() ?? ""
+            return city + ", " + state
+        } else {
+            locationBtn.isEnabled = false
+            return "No location provided"
+        }
         
     }
     
@@ -130,6 +135,7 @@ class PetViewController: UIViewController {
     @IBAction func showShelterLocation(_ sender: Any) {
         
         let shelterVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ShelterLocation") as! ShelterLocationViewController
+        print("Shelter name: \(pet.shelter?.name ?? "No Name")")
         shelterVC.shelter = pet.shelter
         self.navigationController?.pushViewController(shelterVC, animated: true
         )

@@ -105,12 +105,13 @@ class SwiftyParse {
                 breeds.breed = breedsDict[PetFinderConstants.ResponseKeys.General.MysteryT]?.stringValue
                 pet.addToBreeds(breeds)
             }
-            
+            print("------shelter")
             //Get and save shelter data for pet
             if let shelterId = pet.shelterId {
                 self.petFinderCLient.getShelterInfo(shelterId: shelterId, completionHandlerForGetShelterInfo: {(shelterInfo, error) in
                     guard (error == nil) else {
                         print("Get Shelter Error: \(error!.localizedDescription)")
+                        
                         return
                     }
                     guard let shelterInfo = shelterInfo else {
@@ -122,7 +123,13 @@ class SwiftyParse {
                         
                         let shelter = NSEntityDescription.insertNewObject(forEntityName: "Shelter", into: coreDataStack.managedContext) as! Shelter
                         
-                        shelter.name = shelterDict[PetFinderConstants.ResponseKeys.Shelter.Name][PetFinderConstants.ResponseKeys.General.MysteryT].stringValue
+                        if let name = shelterDict[PetFinderConstants.ResponseKeys.Shelter.Name][PetFinderConstants.ResponseKeys.General.MysteryT].string {
+                            shelter.name = name
+                            //print("name: \(name)")
+                        } else {
+                            shelter.name = "No name provided"
+                        }
+                        
                         shelter.phone = shelterDict[PetFinderConstants.ResponseKeys.Shelter.Phone][PetFinderConstants.ResponseKeys.General.MysteryT].stringValue
                         shelter.state = shelterDict[PetFinderConstants.ResponseKeys.Shelter.State][PetFinderConstants.ResponseKeys.General.MysteryT].stringValue
                         shelter.address1 = shelterDict[PetFinderConstants.ResponseKeys.Shelter.Address1][PetFinderConstants.ResponseKeys.General.MysteryT].stringValue
@@ -138,7 +145,6 @@ class SwiftyParse {
                 })
                 
             }
-            
             coreDataStack.saveContext()
         }
         
