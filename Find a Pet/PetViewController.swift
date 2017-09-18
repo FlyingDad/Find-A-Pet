@@ -135,7 +135,6 @@ class PetViewController: UIViewController {
     @IBAction func showShelterLocation(_ sender: Any) {
         
         let shelterVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ShelterLocation") as! ShelterLocationViewController
-        print("Shelter name: \(pet.shelter?.name ?? "No Name")")
         shelterVC.shelter = pet.shelter
         self.navigationController?.pushViewController(shelterVC, animated: true
         )

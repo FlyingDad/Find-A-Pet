@@ -15,7 +15,6 @@ final class PetFinderClient {
     
     // Find pet via location
     func findPet(location: String, animalType: String, completionHandlerForFindPet: @escaping (_ pet: [String: AnyObject]?, _ error: NSError?) -> Void) {
-        print(animalType)
         let methodParameters = [
             PetFinderConstants.ParameterKeys.Key: PetFinderConstants.ParameterValues.ApiKey,
             PetFinderConstants.ParameterKeys.FindPet.Location: location,

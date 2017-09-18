@@ -147,7 +147,6 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     func searchForPets(usingZip zip: String, newZip: Bool) {
         UserDefaults.standard.set(animalTypeLastSearched, forKey: "animalTypeLastSearched")
         UserDefaults.standard.set(zipCodeLastSearched, forKey: "zipCodeLastSearched")
-        //print("searching for \(self.animalTypeRawData[self.animalTypeLastSearched])")//
             
             // need to delete all records if search is for different zipcode
             // also save new zip code in user defaults
