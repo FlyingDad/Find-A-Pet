@@ -105,7 +105,6 @@ class SwiftyParse {
                 breeds.breed = breedsDict[PetFinderConstants.ResponseKeys.General.MysteryT]?.stringValue
                 pet.addToBreeds(breeds)
             }
-            print("------shelter")
             //Get and save shelter data for pet
             if let shelterId = pet.shelterId {
                 self.petFinderCLient.getShelterInfo(shelterId: shelterId, completionHandlerForGetShelterInfo: {(shelterInfo, error) in
